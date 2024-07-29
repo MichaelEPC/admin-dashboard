@@ -22,20 +22,18 @@ const ItemsNav = ({
 }: ControlProps) => {
   return (
     <li
-      className={`relative flex cursor-pointer items-center justify-center border-t-2 border-ligh-gray ${style.navItems} ${currentPage == id ? "navitemsActive" : ""}`}
+      className={`flex cursor-pointer items-center justify-center border-t-2 border-ligh-gray transition-all duration-150 ${style.navItems} ${currentPage === id ? style.navitemsActive : ""}`}
       onClick={() => {
         setCurrentPage(id);
       }}
     >
-      <div
-        className={`flex items-center justify-center ${style.NavIconDiv} absolute left-8 top-4`}
-      >
+      <div className={`flex items-center justify-center ${style.navIconDiv} `}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="32"
           height="32"
           viewBox="0 0 24 24"
-          className="NavIcon transition-all duration-300"
+          className="NavIcon transition-all duration-500"
         >
           <path d={svgPath}></path>
         </svg>
@@ -43,11 +41,11 @@ const ItemsNav = ({
       <div
         className={`transition-all duration-150 ${navIsOpen ? "NavItemsText" : "closeItems"}`}
       >
-        <div
-          className={`textNavItems text-base font-semibold text-principal-color transition-all duration-150 ${navIsOpen ? "NavItemsText" : "hidden"}`}
+        <p
+          className={`text-base font-semibold text-principal-color transition-all duration-150 ${style.textItems} ${navIsOpen ? "textItems" : "hidden"}`}
         >
           {name}
-        </div>
+        </p>
       </div>
     </li>
   );

@@ -2,6 +2,40 @@
   height: 62px;
 }
 
-.NavIconDiv svg {
+.navIconDiv {
+  min-height: auto;
+  min-width: 94px;
+}
+
+.navIconDiv svg {
   fill: #2b9eb3;
+}
+
+.textItems {
+  min-height: auto;
+  min-width: 180px;
+}
+
+/* Hover style */
+
+.navItems:hover {
+  background-color: #2b9eb3;
+  .navIconDiv svg {
+    fill: white;
+  }
+  .textItems {
+    color: white;
+  }
+}
+
+/* Activate style */
+
+.navitemsActive {
+  background-color: #2b9eb3;
+  .navIconDiv svg {
+    fill: white;
+  }
+  .textItems {
+    color: white;
+  }
 }
