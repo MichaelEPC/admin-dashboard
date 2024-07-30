@@ -31,7 +31,7 @@ const navItems = [
 ];
 
 const Nav = () => {
-  const [navIsOpen, setNavIsOpen] = React.useState(true);
+  const [navIsOpen, setNavIsOpen] = React.useState(false);
   const [currentPage, setCurrentPage] = React.useState(1);
   const path = usePathname();
 
@@ -49,7 +49,7 @@ const Nav = () => {
 
   return (
     <nav
-      className={`${navIsOpen ? style.navContainerExpanded : style.navContainer} absolute bg-white shadow-md transition-all duration-150`}
+      className={`absolute z-30 bg-white shadow-md transition-all duration-150 ${navIsOpen ? style.navContainerExpanded : style.navContainer}`}
     >
       <ul>
         {navItems.map((navItem) => {
