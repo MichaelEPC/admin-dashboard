@@ -19,7 +19,7 @@ const signIn = () => {
       <div className="mt-5 px-10">
         <label className="font-semibold text-text-color">Email:</label>
         <input
-          className="mt-2 h-8 rounded-lg border-2 border-principal-color p-2 text-text-color outline-none"
+          className="mt-2 h-8 w-full rounded-lg border-2 border-principal-color p-2 text-text-color outline-none"
           placeholder="youremail@hotmail.com"
           name="email"
           type="text"
@@ -30,7 +30,7 @@ const signIn = () => {
       <div className="mt-5 px-10">
         <label className="font-semibold text-text-color">Password:</label>
         <input
-          className="mt-2 h-8 rounded-lg border-2 border-principal-color p-2 text-text-color outline-none"
+          className="mt-2 h-8 w-full rounded-lg border-2 border-principal-color p-2 text-text-color outline-none"
           placeholder="*******"
           name="password"
           type="password"

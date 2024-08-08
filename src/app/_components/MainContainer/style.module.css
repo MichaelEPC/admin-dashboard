@@ -1,9 +1,9 @@
 .mainContainer {
   min-height: calc(100vh - 64px);
-  width: calc(100% - 94px);
+  width: 100%;
   position: absolute;
   top: 62.2px;
-  left: 93px;
+  left: 0px;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -11,4 +11,11 @@
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+@media (min-width: 620px) {
+  .mainContainer {
+    left: 93px;
+    width: calc(100% - 94px);
+  }
 }

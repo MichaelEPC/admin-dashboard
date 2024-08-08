@@ -6,9 +6,7 @@ const MainContainer = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <main
-      className={`z-20 flex flex-col items-center justify-between ${style.mainContainer} `}
-    >
+    <main className={`z-20 flex flex-col ${style.mainContainer} `}>
       {children}
     </main>
   );

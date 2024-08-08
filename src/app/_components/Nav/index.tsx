@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect } from "react";
 import ItemsNav from "./ItemsNav";
 import { usePathname } from "next/navigation";
@@ -49,9 +51,9 @@ const Nav = () => {
 
   return (
     <nav
-      className={`absolute z-30 bg-white shadow-md transition-all duration-150 ${navIsOpen ? style.navContainerExpanded : style.navContainer}`}
+      className={`fixed z-30 bg-white shadow-md transition-all duration-150 ${navIsOpen ? style.navContainerExpanded : style.navContainer}`}
     >
-      <ul>
+      <ul className={`flex-col sm:flex ${navIsOpen ? "block" : "hidden"}`}>
         {navItems.map((navItem) => {
           return (
             <ItemsNav
@@ -67,7 +69,7 @@ const Nav = () => {
         })}
       </ul>
       <div
-        className="absolute -right-6 top-80 cursor-pointer"
+        className="absolute -right-10 top-80 cursor-pointer sm:-right-6"
         onClick={() => {
           if (navIsOpen) {
             setNavIsOpen(false);

@@ -16,7 +16,7 @@ export const usersTable = sqliteTable("users", {
   rol: text("rol").notNull(),
 });
 
-export const postsTable = sqliteTable("posts", {
+export const companyTable = sqliteTable("companys", {
   id: integer("id").primaryKey(),
   title: text("title").notNull(),
   content: text("content").notNull(),
@@ -32,5 +32,5 @@ export const postsTable = sqliteTable("posts", {
 });
 export type InsertUser = typeof usersTable.$inferInsert;
 export type SelectUser = typeof usersTable.$inferSelect;
-export type InsertPost = typeof postsTable.$inferInsert;
-export type SelectPost = typeof postsTable.$inferSelect;
+export type InsertPost = typeof companyTable.$inferInsert;
+export type SelectPost = typeof companyTable.$inferSelect;

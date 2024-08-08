@@ -3,11 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const appSlice = createSlice({
   name: "app",
   initialState: {
-    navIsOpen: true,
+    navMob: true,
   },
   reducers: {
     toggleNav: (state) => {
-      state.navIsOpen = !state.navIsOpen;
+      state.navMob = !state.navMob;
     },
   },
 });

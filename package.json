@@ -9,8 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^2.1.2",
+    "@headlessui/tailwindcss": "^0.2.1",
     "@libsql/client": "^0.7.0",
     "@reduxjs/toolkit": "^2.2.7",
+    "@remixicon/react": "^4.2.0",
+    "@tremor/react": "^3.17.4",
     "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.32.1",
@@ -20,9 +24,11 @@
     "react-dom": "^18",
     "react-redux": "^9.1.2",
     "redux": "^5.0.1",
+    "uuid": "^10.0.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.7",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -32,7 +38,7 @@
     "postcss": "^8",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.5",
-    "tailwindcss": "^3.4.1",
+    "tailwindcss": "^3.4.7",
     "typescript": "^5"
   }
 }
