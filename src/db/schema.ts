@@ -1,11 +1,14 @@
 import { randomUUID } from "crypto";
 import { sql } from "drizzle-orm";
-import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 const id = () =>
   text("id")
     .primaryKey()
     .$default(() => randomUUID());
+
+const makeAList = (name: string) =>
+  text(name).$default(() => JSON.stringify([]));
 
 export const usersTable = sqliteTable("users", {
   id: id(),
@@ -14,23 +17,23 @@ export const usersTable = sqliteTable("users", {
   email: text("email").unique().notNull(),
   password: text("password").notNull(),
   rol: text("rol").notNull(),
+  company: text("company").$default(() => "none"),
 });
 
-export const companyTable = sqliteTable("companys", {
-  id: integer("id").primaryKey(),
-  title: text("title").notNull(),
-  content: text("content").notNull(),
-  userId: integer("user_id")
-    .notNull()
-    .references(() => usersTable.id, { onDelete: "cascade" }),
+export const companyTable = sqliteTable("company", {
+  id: id(),
+  name: text("name").notNull(),
+  category: text("category").notNull(),
+  employees: makeAList("employees"),
+  request: makeAList("request"),
+  taskList: makeAList("taskList"),
+  operations: makeAList("operations"),
+  feedBack: makeAList("feedBack"),
   createdAt: text("created_at")
     .default(sql`(CURRENT_TIMESTAMP)`)
     .notNull(),
-  updateAt: integer("updated_at", { mode: "timestamp" }).$onUpdate(
-    () => new Date(),
-  ),
 });
 export type InsertUser = typeof usersTable.$inferInsert;
 export type SelectUser = typeof usersTable.$inferSelect;
-export type InsertPost = typeof companyTable.$inferInsert;
-export type SelectPost = typeof companyTable.$inferSelect;
+export type InsertCompany = typeof companyTable.$inferInsert;
+export type SelectCompany = typeof companyTable.$inferSelect;

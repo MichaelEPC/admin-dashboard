@@ -1,7 +1,6 @@
 "use server";
 import { signin } from "app/utils/authTool";
 import { COOKIE_NAME } from "app/utils/const";
-import { error } from "console";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { z } from "zod";
