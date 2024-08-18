@@ -39,7 +39,11 @@ const Nav = () => {
 
   useEffect(() => {
     switch (path) {
-      case "/contact":
+      case "/home":
+        setCurrentPage(1);
+        break;
+
+      case "/team":
         setCurrentPage(2);
         break;
 

@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import { CardUsageExample } from "app/app/_components/CardInformative";
 import { DonutChartGraphic } from "app/app/_components/DonutChart";
 import { AreaChartGraphic } from "app/app/_components/Areachart";
@@ -12,26 +12,39 @@ import {
   employeesCategories,
   employeeContent,
 } from "./tableContent";
-import { isUserLog } from "app/actions/Auth/CheckUserSingIn";
-import { v4 as uuidv4 } from "uuid";
+import { getCompany } from "app/actions/Company/GetCompany";
 
 const home = () => {
-  const uniqueId = uuidv4();
+  const [companyinfo, setCompanyInfo] = React.useState({});
+
   useEffect(() => {
-    isUserLog();
+    const fillInfo = async () => {
+      const company = await getCompany();
+      setCompanyInfo(company);
+    };
+    fillInfo();
   }, []);
   return (
     <>
       <section className="h-auto w-full x2:px-40">
         <div className="mt-4 grid h-auto w-full grid-cols-3 gap-3">
-          <CardUsageExample operation="productivityGoal" />
-          <CardUsageExample operation="taskCompleted" />
-          <CardUsageExample operation="showTotalEmployees" />
+          <CardUsageExample
+            operation="productivityGoal"
+            data={{ ...companyinfo }}
+          />
+          <CardUsageExample
+            operation="taskCompleted"
+            data={{ ...companyinfo }}
+          />
+          <CardUsageExample
+            operation="showTotalEmployees"
+            data={{ ...companyinfo }}
+          />
         </div>
         <div className="mt-10 x2:px-12 x4:px-52">
           <div className="flex h-auto w-full flex-col items-center justify-center gap-2 p-2 sm:flex-row">
             <div className="flex h-80 w-full flex-col items-center justify-center rounded-lg border-2 border-ligh-gray bg-white py-4 shadow-md sm:w-2/5">
-              <DonutChartGraphic />
+              <DonutChartGraphic dataReceived={{ ...companyinfo }} />
             </div>
             <div className="flex h-auto w-full justify-center sm:w-3/4">
               <AreaChartGraphic />

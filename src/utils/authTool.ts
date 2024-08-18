@@ -1,5 +1,4 @@
 import "server-only";
-
 import jwt from "jsonwebtoken";
 import { db } from "../db/index";
 import { usersTable, companyTable } from "app/db/schema";
@@ -34,6 +33,7 @@ export const getUserFromToken = async (token: {
       email: true,
       name: true,
       rol: true,
+      company: true,
     },
   });
 
@@ -90,6 +90,16 @@ export const signup = async ({
             job: "owner",
           },
         ]),
+        taskList: JSON.stringify({
+          goal: 0,
+          taskCompleted: 0,
+          completedTask: [],
+          pendingTask: [],
+        }),
+        feedBack: JSON.stringify({
+          letters: [],
+          rating: [],
+        }),
       })
       .where(eq(companyTable.id, company.id));
   } else {

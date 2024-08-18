@@ -1,7 +1,15 @@
 import { Card, Metric, Text } from "@tremor/react";
+import { OpenDialogDailyProductivity } from "./_components/OpenDialogForm";
+import React, { useCallback } from "react";
 
-export function CardUsageExample({ operation }: { operation: string }) {
-  const putOperationTitle = () => {
+export function CardUsageExample({
+  operation,
+  data,
+}: {
+  operation: string;
+  data: object;
+}) {
+  const putOperationTitle = useCallback(() => {
     switch (operation) {
       case "showTotalEmployees":
         return "Employees";
@@ -15,9 +23,9 @@ export function CardUsageExample({ operation }: { operation: string }) {
       default:
         return "";
     }
-  };
+  }, []);
 
-  const putOperationSvg = () => {
+  const putOperationSvg = useCallback(() => {
     switch (operation) {
       case "showTotalEmployees":
         return "M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 3.33A1.67 1.67 0 1 1 10.33 7 1.67 1.67 0 0 1 12 5.33zm3.33 12.5-1.66.84-1.39-3.89h-.56l-1.39 3.89-1.66-.84 1.66-4.72v-1.66L7 10.33l.56-1.66 3.33 1.11h2.22l3.33-1.11.56 1.66-3.33 1.12v1.66z";
@@ -31,23 +39,55 @@ export function CardUsageExample({ operation }: { operation: string }) {
       default:
         return "";
     }
-  };
+  }, []);
 
-  const putOperationText = () => {
+  const putOperationText = useCallback(() => {
     switch (operation) {
       case "showTotalEmployees":
-        return "102";
+        return `${isUndefined(data?.employees, "employees")}`;
 
       case "taskCompleted":
-        return "109";
+        return `${isUndefined(data?.taskList, "taskCompleted")}`;
 
       case "productivityGoal":
-        return "8/10";
+        return `${isUndefined(data?.taskList, "goal")}`;
 
       default:
         return "";
     }
-  };
+  }, [data]);
+
+  const putSecondSvg = useCallback(() => {
+    switch (operation) {
+      case "productivityGoal":
+        return "m16 2.012 3 3L16.713 7.3l-3-3zM4 14v3h3l8.299-8.287-3-3zm0 6h16v2H4z";
+
+      default:
+        return "";
+    }
+  }, []);
+
+  const isUndefined = useCallback(
+    (infoStringify: string, wanted: string) => {
+      if (!infoStringify) {
+        return "";
+      }
+      const list = JSON.parse(infoStringify);
+      console.log(list);
+      switch (wanted) {
+        case "employees":
+          return `${list.length}`;
+        case "goal":
+          return `${list?.taskCompleted}/${list?.goal}`;
+        case "taskCompleted":
+          return `${list?.completedTask.length}`;
+
+        default:
+          return undefined;
+      }
+    },
+    [data],
+  );
 
   return (
     <Card className="mx-auto max-w-xs" decoration="top" decorationColor="cyan">
@@ -63,9 +103,16 @@ export function CardUsageExample({ operation }: { operation: string }) {
           <path d={putOperationSvg()}></path>
         </svg>
       </div>
-      <p className="text-2xl font-semibold text-tremor-content-strong dark:text-dark-tremor-content-strong">
-        {putOperationText()}
-      </p>
+      <div className="flex items-center justify-between">
+        <p className="text-2xl font-semibold text-tremor-content-strong dark:text-dark-tremor-content-strong">
+          {putOperationText()}
+        </p>
+        {putSecondSvg() ? (
+          <OpenDialogDailyProductivity putSecondSvg={putSecondSvg()} />
+        ) : (
+          ""
+        )}
+      </div>
     </Card>
   );
 }

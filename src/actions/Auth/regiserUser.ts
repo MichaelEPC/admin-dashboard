@@ -1,7 +1,7 @@
 "use server";
 import { redirect } from "next/navigation";
 import { z } from "zod";
-import { createCompany, signup } from "../../utils/authTool";
+import { signup } from "../../utils/authTool";
 import { cookies } from "next/headers";
 import { COOKIE_NAME } from "app/utils/const";
 

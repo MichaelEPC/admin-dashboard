@@ -21,6 +21,9 @@ const config: Config = {
       md: "880px",
       // => @media (min-width: 768px) { ... }
 
+      semimd: "700px",
+      // => @media (min-width: 768px) { ... }
+
       lg: "1024px",
       // => @media (min-width: 1024px) { ... }
 

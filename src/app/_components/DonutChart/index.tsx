@@ -1,6 +1,6 @@
 "use client";
-
 import { DonutChart, Legend } from "@tremor/react";
+import React, { useEffect } from "react";
 
 const votesData = [
   {
@@ -32,7 +32,16 @@ const votesData = [
 const valueFormatter = (number: number) =>
   `Votes: ${Intl.NumberFormat("us").format(number).toString()}`;
 
-export function DonutChartGraphic() {
+export function DonutChartGraphic({ dataReceived }: { dataReceived: object }) {
+  const [data, setData] = React.useState([]);
+
+  useEffect(() => {
+    if (!dataReceived.feedBack) return;
+    let info = dataReceived.feedBack;
+    info = JSON.parse(info);
+    setData(info.rating);
+  }, [dataReceived]);
+
   return (
     <>
       <div className="mb-4 flex h-auto w-full items-center justify-center">
@@ -42,7 +51,7 @@ export function DonutChartGraphic() {
       </div>
       <div className="flex flex-col items-center justify-center space-x-6">
         <DonutChart
-          data={votesData}
+          data={data}
           category="sales"
           index="name"
           valueFormatter={valueFormatter}
@@ -64,6 +73,13 @@ export function DonutChartGraphic() {
           />
         </div>
       </div>
+      {!data && (
+        <div className="flex h-auto w-full items-center justify-center">
+          <p className="mt-1 text-sm font-normal text-text-color">
+            Tell the employees to rate they experience!
+          </p>
+        </div>
+      )}
     </>
   );
 }
