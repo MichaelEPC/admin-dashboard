@@ -1,4 +1,5 @@
 import "server-only";
+
 import jwt from "jsonwebtoken";
 import { db } from "../db/index";
 import { usersTable, companyTable } from "app/db/schema";
@@ -37,6 +38,21 @@ export const getUserFromToken = async (token: {
     },
   });
 
+  return user;
+};
+
+export const getUserFromId = async (userId: string) => {
+  const user = await db.query.usersTable.findFirst({
+    where: eq(usersTable.id, userId),
+    columns: {
+      id: true,
+      email: true,
+      name: true,
+      rol: true,
+      cellphone: true,
+      company: true,
+    },
+  });
   return user;
 };
 
@@ -98,7 +114,34 @@ export const signup = async ({
         }),
         feedBack: JSON.stringify({
           letters: [],
-          rating: [],
+          rating: [
+            {
+              name: "Super Good",
+              color: "blue",
+              sales: 0,
+            },
+            {
+              name: "Good",
+              color: "cyan",
+              sales: 0,
+            },
+            {
+              name: "Medium",
+              color: "green",
+              sales: 0,
+            },
+            {
+              name: "Not well",
+              color: "yellow",
+              sales: 0,
+            },
+            {
+              name: "Bad",
+              color: "red",
+              sales: 0,
+            },
+          ],
+          voted: [],
         }),
       })
       .where(eq(companyTable.id, company.id));

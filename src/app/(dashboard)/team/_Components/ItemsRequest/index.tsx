@@ -1,6 +1,19 @@
+"use client";
+
+import { acceptJoinRequestAction } from "app/actions/Company/AcceptJoinRequest";
 import style from "./style.module.css";
 
-const ItemsRequest = ({ name, email }: { name: string; email: string }) => {
+const ItemsRequest = ({
+  companyId,
+  userId,
+  name,
+  email,
+}: {
+  companyId: string;
+  userId: string;
+  name: string;
+  email: string;
+}) => {
   return (
     <article className="mt-2 flex h-12 w-full flex-row items-center justify-around rounded-lg border-2 border-ligh-gray">
       <div className="flex h-auto justify-center">
@@ -19,6 +32,9 @@ const ItemsRequest = ({ name, email }: { name: string; email: string }) => {
       <div className="flex">
         <div
           className={`duration-400 cursor-pointer rounded-lg transition-all ${style.checkBox}`}
+          onClick={() => {
+            acceptJoinRequestAction(companyId, userId);
+          }}
         >
           <svg
             className={`h-12 w-12 ${style.checkBoxSvg}`}

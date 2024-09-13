@@ -1,5 +1,6 @@
 import "server-only";
 
+import { revalidatePath } from "next/cache";
 import { db } from "../db/index";
 import { companyTable } from "app/db/schema";
 import { eq } from "drizzle-orm";
@@ -19,6 +20,8 @@ export const changeGoal = async (goal: string) => {
       taskList: JSON.stringify(originalState),
     })
     .where(eq(companyTable.id, company.id));
+
+  revalidatePath("/home");
 };
 
 export const resetTaskGoal = async () => {
@@ -34,4 +37,6 @@ export const resetTaskGoal = async () => {
       taskList: JSON.stringify(originalState),
     })
     .where(eq(companyTable.id, company.id));
+
+  revalidatePath("/home");
 };

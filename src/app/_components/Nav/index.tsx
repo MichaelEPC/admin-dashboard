@@ -47,6 +47,14 @@ const Nav = () => {
         setCurrentPage(2);
         break;
 
+      case "/operations":
+        setCurrentPage(3);
+        break;
+
+      case "/agenda":
+        setCurrentPage(4);
+        break;
+
       default:
         setCurrentPage(1);
         break;

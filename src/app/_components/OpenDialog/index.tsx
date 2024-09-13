@@ -2,19 +2,31 @@ import { Button, Dialog, DialogPanel } from "@tremor/react";
 import React, { ReactNode } from "react";
 
 export function OpenDialog({
+  buttonTitle,
   title,
   content,
   children,
+  action,
 }: {
+  buttonTitle: string;
   title: string;
   content: string;
-  children: ReactNode;
+  children?: ReactNode;
+  action?: () => Promise<void>;
 }) {
   const [isOpen, setIsOpen] = React.useState(false);
   return (
     <>
-      <Button className="mx-auto block" onClick={() => setIsOpen(true)}>
-        Open Dialog
+      <Button
+        className="block"
+        onClick={async () => {
+          if (action) {
+            await action();
+          }
+          setIsOpen(true);
+        }}
+      >
+        {buttonTitle}
       </Button>
       <Dialog open={isOpen} onClose={(val) => setIsOpen(val)} static={true}>
         <DialogPanel>
@@ -25,7 +37,12 @@ export function OpenDialog({
             {content}
           </p>
           {children}
-          <Button className="mt-8 w-full" onClick={() => setIsOpen(false)}>
+          <Button
+            className="mt-8 w-full"
+            onClick={() => {
+              setIsOpen(false);
+            }}
+          >
             Got it!
           </Button>
         </DialogPanel>

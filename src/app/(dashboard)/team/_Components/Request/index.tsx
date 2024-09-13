@@ -15,9 +15,15 @@ const Request = async () => {
         <p className="mt-1 font-semibold text-text-color">No requets found</p>
       )}
       {typeof request === "object" &&
-        request.map((request) => (
+        request.map((soloRequest) => (
           // Keyy!!!!!!
-          <ItemsRequest name="hola" email="ejemplo@gmail.com" />
+          <ItemsRequest
+            key={soloRequest.userId}
+            companyId={soloRequest.companyId}
+            userId={soloRequest.userId}
+            name={soloRequest.name}
+            email={soloRequest.email}
+          />
         ))}
     </div>
   );

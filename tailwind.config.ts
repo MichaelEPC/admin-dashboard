@@ -18,11 +18,11 @@ const config: Config = {
       sm: "620px",
       // => @media (min-width: 640px) { ... }
 
-      md: "880px",
-      // => @media (min-width: 768px) { ... }
-
       semimd: "700px",
-      // => @media (min-width: 768px) { ... }
+      // => @media (min-width: 700px) { ... }
+
+      md: "880px",
+      // => @media (min-width: 880px) { ... }
 
       lg: "1024px",
       // => @media (min-width: 1024px) { ... }
