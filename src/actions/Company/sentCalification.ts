@@ -2,6 +2,7 @@
 
 import { changeRating } from "app/utils/companyTools";
 import { isUserLog } from "../Auth/CheckUserSingIn";
+import { revalidatePath } from "next/cache";
 
 export const changeRatingAction = async (nameCalification: string) => {
   try {
@@ -10,5 +11,6 @@ export const changeRatingAction = async (nameCalification: string) => {
       return;
     }
     await changeRating(nameCalification, user);
+    revalidatePath("/home");
   } catch (error) {}
 };

@@ -7,7 +7,6 @@ export const getCompany = async () => {
   const user = await isUserLog();
   if (!user) {
     redirect("/signin");
-    return;
   }
   const company = await getCompanyFromUser();
   if (!company) {

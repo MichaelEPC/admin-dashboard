@@ -1,12 +1,14 @@
-import TaskAsignItem from "./TaskAsignItem";
+import TaskAsingContainer from "./_components/TaskAsingContainer/TaskAsignContainert";
 
-const TaskAsign = async () => {
+const TaskAsign = () => {
   return (
-    <section className="flex h-auto w-2/5 flex-col items-center">
-      <h3 className="text-2xl font-semibold text-principal-color">
-        Task asigned to employees
-      </h3>
-      <TaskAsignItem name="John Baptist" job="Frotend Developer" task="0" />
+    <section className="mt-3 flex h-auto w-full flex-col items-center x3:w-2/5">
+      <div className="flex h-auto w-full">
+        <h3 className="text-2xl font-bold text-principal-color">
+          Task asign to employees:
+        </h3>
+      </div>
+      <TaskAsingContainer />
     </section>
   );
 };

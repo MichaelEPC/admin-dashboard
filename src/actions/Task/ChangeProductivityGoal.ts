@@ -20,14 +20,14 @@ export const changeProductivityGoal = async (
     } else {
       const goal = data.goal;
       changeGoal(goal);
+      revalidatePath("/home");
     }
   } catch (error) {}
-  revalidatePath("/home");
 };
 
 export const resetTask = async () => {
   try {
     await resetTaskGoal();
+    revalidatePath("/home");
   } catch (error) {}
-  revalidatePath("/home");
 };

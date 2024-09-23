@@ -11,18 +11,36 @@ const FormProductivity = ({ setIsOpen }) => {
     changeProductivityGoal,
     { message: null },
   );
+
+  const validateForm = () => {
+    const inputGoal = document.getElementById(
+      "goal-number-input",
+    ) as HTMLInputElement;
+    if (inputGoal && inputGoal.value.trim() === "") {
+      return false;
+    }
+    return true;
+  };
+
   return (
     <>
       <form action={action} className="mb-2">
         <div className="mb-4 h-auto w-full justify-center">
           <input
+            id="goal-number-input"
             className="mt-2 h-auto w-full rounded-lg"
             name="goal"
             type="number"
             required
           />
         </div>
-        <div onClick={() => setIsOpen(false)}>
+        <div
+          onClick={() => {
+            if (validateForm()) {
+              setIsOpen(false);
+            }
+          }}
+        >
           <ButtonSubmit label="Got it!" />
         </div>
       </form>

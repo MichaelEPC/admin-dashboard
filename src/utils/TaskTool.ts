@@ -5,6 +5,7 @@ import { db } from "../db/index";
 import { companyTable } from "app/db/schema";
 import { eq } from "drizzle-orm";
 import { getCompany } from "app/actions/Company/GetCompany";
+import { getCompanyFromUser } from "./companyTools";
 
 export const changeGoal = async (goal: string) => {
   const company = await getCompany();
@@ -39,4 +40,82 @@ export const resetTaskGoal = async () => {
     .where(eq(companyTable.id, company.id));
 
   revalidatePath("/home");
+};
+
+export const addNewTask = async (
+  idEmployee: string,
+  taskName: string,
+  taskDays: string,
+  taskState: string,
+) => {
+  const company = await getCompanyFromUser();
+
+  if (!company || company == "none") {
+    return;
+  }
+
+  const taskList = JSON.parse(company.taskList);
+
+  const uniqueId = crypto.randomUUID();
+  taskList.pendingTask.push({
+    id: uniqueId,
+    idEmployee: idEmployee,
+    taskName: taskName,
+    taskState: taskState,
+    taskDays: taskDays,
+    completed: false,
+  });
+  taskList.totalTask.push({
+    id: uniqueId,
+    idEmployee: idEmployee,
+    taskName: taskName,
+    taskState: taskState,
+    taskDays: taskDays,
+    completed: false,
+  });
+
+  await db
+    .update(companyTable)
+    .set({
+      taskList: JSON.stringify(taskList),
+    })
+    .where(eq(companyTable.id, company.id));
+};
+
+export const getTotalTask = async () => {
+  const company = await getCompanyFromUser();
+
+  if (!company || company == "none") {
+    return;
+  }
+
+  const taskList = await JSON.parse(company.taskList);
+
+  return taskList.totalTask;
+};
+
+export const deleteTask = async (idTask: string) => {
+  const company = await getCompanyFromUser();
+
+  if (!company || company == "none") {
+    return;
+  }
+
+  const taskList = JSON.parse(company.taskList);
+  taskList.pendingTask = await taskList.pendingTask.filter(
+    (task) => task.id !== idTask.id,
+  );
+  taskList.completedTask = await taskList.completedTask.filter(
+    (task) => task.id !== idTask.id,
+  );
+  taskList.totalTask = await taskList.totalTask.filter(
+    (task) => task.id !== idTask.id,
+  );
+
+  await db
+    .update(companyTable)
+    .set({
+      taskList: JSON.stringify(taskList),
+    })
+    .where(eq(companyTable.id, company.id));
 };

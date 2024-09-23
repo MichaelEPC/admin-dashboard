@@ -143,7 +143,6 @@ export const acceptJoinRequest = async (companyId: string, userId: string) => {
 
 export const userAlreadyVote = async (user: UserProps) => {
   try {
-    console.log("hola");
     const userCompany = JSON.parse(user?.company);
     const company = await getCompanyById(userCompany.id);
     if (typeof company == "string" || !company) {

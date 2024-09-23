@@ -1,5 +1,5 @@
-import AreaContainer from "./_Components/AreaContainer/indext";
-import DonutOperationsContainer from "./_Components/DonutContainer";
+import AreaContainer from "./_Views/_Components/AreaContainer/indext";
+import DonutOperationsContainer from "./_Views/_Components/DonutContainer";
 
 const operation = () => {
   return (
