@@ -1,9 +1,7 @@
 "use client";
 
 import React, { Suspense, useEffect } from "react";
-import { CardUsageExample } from "app/app/_components/CardInformative";
 import { CalloutCard } from "app/app/_components/TextCards";
-import { TableDashBoard } from "app/app/_components/TableTask";
 import { TableTeamMembers } from "app/app/_components/TableTeamMembers";
 import {
   taskNameCategories,
@@ -12,8 +10,10 @@ import {
   employeeContent,
 } from "./tableContent";
 import { getCompany } from "app/actions/Company/GetCompany";
-import { AreaChartGraphic } from "app/app/_components/AreaChart";
-import { DonutChartGraphic } from "app/app/_components/DonutChart";
+import { DonutChartGraphic } from "./_Components/DonutChart";
+import { CardUsageExample } from "./_Components/CardInformative";
+import { AreaChartOperationAdmin } from "./_Components/AreaChart";
+import { TableDashBoard } from "app/app/_components/TableTask";
 
 const admin = () => {
   const [companyinfo, setCompanyInfo] = React.useState({});
@@ -48,7 +48,7 @@ const admin = () => {
               <DonutChartGraphic dataReceived={{ ...companyinfo }} />
             </div>
             <div className="flex h-auto w-full justify-center sm:w-3/4">
-              <AreaChartGraphic />
+              <AreaChartOperationAdmin />
             </div>
           </div>
 
@@ -61,11 +61,7 @@ const admin = () => {
             </div>
 
             <div className="flex h-full w-full flex-col items-center md:w-3/4">
-              <TableDashBoard
-                key={1}
-                tableCategories={taskNameCategories}
-                content={taskNameContent}
-              />
+              <TableDashBoard tableCategories={taskNameCategories} />
             </div>
           </div>
 

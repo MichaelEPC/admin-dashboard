@@ -1,4 +1,7 @@
 export const formatShortName = (content: string, max: number) => {
+  if (!content) {
+    return "";
+  }
   if (content.length <= max) {
     return content;
   }

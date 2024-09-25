@@ -1,3 +1,6 @@
+"use client";
+
+import React, { useEffect } from "react";
 import { formatShortName } from "app/utils/generalTools";
 import {
   Table,
@@ -7,16 +10,27 @@ import {
   TableHeaderCell,
   TableRow,
 } from "@tremor/react";
+import { getEmployees } from "app/actions/Company/getEmployees";
 
 interface ControlProps {
   tableCategories: [{ category: string }];
-  content: [{ person_name: string; content: string }];
 }
 
-export const TableTeamMembers = ({
-  tableCategories,
-  content,
-}: ControlProps) => {
+export const TableTeamMembers = ({ tableCategories }: ControlProps) => {
+  const [employees, setEmployees] = React.useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const employeesList = await getEmployees();
+      console.log(employeesList);
+
+      if (!employeesList) {
+        setEmployees([]);
+      }
+      setEmployees(employeesList);
+    };
+    fetchData();
+  }, []);
   return (
     <div className="flex h-auto w-full flex-col items-center">
       <h3 className="mt-2 text-2xl font-semibold text-text-color">
@@ -37,13 +51,11 @@ export const TableTeamMembers = ({
           </TableHead>
 
           <TableBody>
-            {content.map((taskItem) => {
+            {employees.map((employee: any) => {
               return (
-                <TableRow key={taskItem.person_name}>
-                  <TableCell>{taskItem?.person_name}</TableCell>
-                  <TableCell>
-                    {formatShortName(taskItem?.content, 14)}
-                  </TableCell>
+                <TableRow key={employee.email}>
+                  <TableCell>{employee?.name}</TableCell>
+                  <TableCell>{formatShortName(employee?.email, 14)}</TableCell>
                 </TableRow>
               );
             })}

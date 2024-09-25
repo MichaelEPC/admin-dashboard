@@ -2,9 +2,6 @@
 
 import React, { Suspense, useEffect } from "react";
 import { CardUsageEmployees } from "./_Components/CardInformative";
-import { DonutChartGraphic } from "app/app/_components/DonutChart";
-import { AreaChartGraphic } from "app/app/_components/Areachart";
-import { CalloutCard } from "app/app/_components/TextCards";
 import { TableDashBoard } from "app/app/_components/TableTask";
 import { TableTeamMembers } from "app/app/_components/TableTeamMembers";
 import SendRequestContainer from "./_Components/SendRequestContainer";

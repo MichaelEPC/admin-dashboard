@@ -73,7 +73,6 @@ export function CardUsageExample({
         return "";
       }
       const list = JSON.parse(infoStringify);
-      console.log(list);
       switch (wanted) {
         case "employees":
           return `${list.length}`;
