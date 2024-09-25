@@ -196,6 +196,9 @@ export const signup = async ({
           ],
           voted: [],
         }),
+        operations: JSON.stringify({
+          list: [],
+        }),
       })
       .where(eq(companyTable.id, company.id));
   } else {

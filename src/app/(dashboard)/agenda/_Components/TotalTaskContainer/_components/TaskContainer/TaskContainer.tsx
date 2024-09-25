@@ -5,7 +5,7 @@ const TaskConatainer = async () => {
   const totalTask = await getTotalTaskAction();
   return (
     <div className="bg-white shadow-md">
-      {totalTask.map((task) => {
+      {totalTask.map((task: any) => {
         return (
           <TaskItems
             key={task.id}

@@ -1,18 +1,12 @@
-import AreaContainer from "./_Views/_Components/AreaContainer/indext";
-import DonutOperationsContainer from "./_Views/_Components/DonutContainer";
+import { isUserLog } from "app/actions/Auth/CheckUserSingIn";
+import Admin from "./_Views/Admin";
+import Employee from "./_Views/Employee";
 
-const operation = () => {
+const operation = async () => {
+  const user = await isUserLog();
   return (
-    <div className="flex h-auto w-full flex-col items-center p-10">
-      <div className="flex h-auto w-full items-center">
-        <DonutOperationsContainer />
-        <AreaContainer />
-      </div>
-      <section className="h-auto w-full">
-        <p className="mt-4 text-2xl font-semibold text-text-color">
-          Last works
-        </p>
-      </section>
+    <div className="flex h-auto w-full flex-col items-center">
+      {user?.rol === "owner" ? <Admin /> : <Employee />}
     </div>
   );
 };

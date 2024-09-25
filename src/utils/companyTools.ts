@@ -28,6 +28,7 @@ export const getCompanyFromUser = async () => {
       request: true,
       employees: true,
       feedBack: true,
+      operations: true,
     },
   });
   if (!company) {
@@ -153,8 +154,6 @@ export const userAlreadyVote = async (user: UserProps) => {
     const newListRequest = feedBack.voted.filter(
       (soloRequest) => soloRequest.userId == userId,
     );
-
-    console.log(newListRequest);
 
     if (newListRequest.length == 0) {
       return false;

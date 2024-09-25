@@ -2,8 +2,6 @@
 
 import React, { Suspense, useEffect } from "react";
 import { CardUsageExample } from "app/app/_components/CardInformative";
-import { DonutChartGraphic } from "app/app/_components/DonutChart";
-import { AreaChartGraphic } from "app/app/_components/Areachart";
 import { CalloutCard } from "app/app/_components/TextCards";
 import { TableDashBoard } from "app/app/_components/TableTask";
 import { TableTeamMembers } from "app/app/_components/TableTeamMembers";
@@ -14,6 +12,8 @@ import {
   employeeContent,
 } from "./tableContent";
 import { getCompany } from "app/actions/Company/GetCompany";
+import { AreaChartGraphic } from "app/app/_components/AreaChart";
+import { DonutChartGraphic } from "app/app/_components/DonutChart";
 
 const admin = () => {
   const [companyinfo, setCompanyInfo] = React.useState({});
