@@ -17,7 +17,7 @@ import { TableDashBoard } from "app/app/_components/TableTask";
 import { TableTotalTasks } from "./_Components/TableTasks";
 import { isUserLog } from "app/actions/Auth/CheckUserSingIn";
 
-const admin = () => {
+const Admin = () => {
   const [companyinfo, setCompanyInfo] = React.useState({});
 
   useEffect(() => {
@@ -80,4 +80,4 @@ const admin = () => {
   );
 };
 
-export default admin;
+export default Admin;

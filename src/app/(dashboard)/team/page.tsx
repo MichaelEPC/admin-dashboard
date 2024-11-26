@@ -2,7 +2,7 @@ import { isUserLog } from "app/actions/Auth/CheckUserSingIn";
 import AdminTeam from "./_Views/Admin";
 import EmployeeTeam from "./_Views/Employee";
 
-const team = async () => {
+const Team = async () => {
   const user = await isUserLog();
   return (
     <div className="flex h-auto w-full flex-col items-center">
@@ -11,4 +11,4 @@ const team = async () => {
   );
 };
 
-export default team;
+export default Team;

@@ -1,4 +1,3 @@
-import { getTotalTaskAction } from "app/actions/Task/GetTotalTask";
 import { TableDashBoard } from "./TableTask";
 
 export const taskNameCategories = [
@@ -8,8 +7,6 @@ export const taskNameCategories = [
 ];
 
 const TableDashBoardContainer = async () => {
-  const taskList = await getTotalTaskAction();
-
   return <TableDashBoard tableCategories={taskNameCategories} />;
 };
 

@@ -2,7 +2,7 @@ import { isUserLog } from "app/actions/Auth/CheckUserSingIn";
 import Admin from "./_Views/Admin";
 import Employee from "./_Views/Employee";
 
-const operation = async () => {
+const Operation = async () => {
   const user = await isUserLog();
   return (
     <div className="flex h-auto w-full flex-col items-center">
@@ -11,4 +11,4 @@ const operation = async () => {
   );
 };
 
-export default operation;
+export default Operation;
