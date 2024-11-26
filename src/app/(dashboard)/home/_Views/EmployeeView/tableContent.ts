@@ -13,7 +13,7 @@ export const taskNameContent = [
   { person_name: "sebastian", content: "To the back job", status: "done" },
   { person_name: "juan", content: "To the dev military", status: "Going" },
   { person_name: "hem", content: "To the dev job", status: "Not done" },
-  { person_name: "michaek", content: "To the dev job", status: "Not done" },
+  { person_name: "michael", content: "To the dev job", status: "Not done" },
 ];
 
 export const employeesCategories = [

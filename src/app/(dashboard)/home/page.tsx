@@ -7,7 +7,6 @@ const Home = async () => {
   let isEmployee = true;
   if (user?.rol === "owner") {
     isEmployee = false;
-    console.log("d");
   }
 
   return <>{isEmployee ? <EmployeeView /> : <Admin />}</>;

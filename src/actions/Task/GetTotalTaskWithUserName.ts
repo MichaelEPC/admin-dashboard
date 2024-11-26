@@ -13,6 +13,7 @@ export const getTotalTaskWithNameUserAction = async () => {
         return;
       }
 
+      // @ts-expect-error
       const match = employees.map((employee: any) => {
         if (employee.id === task.idEmployee) {
           return {

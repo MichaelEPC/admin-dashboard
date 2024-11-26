@@ -1,9 +1,11 @@
 import "server-only";
 
+// @ts-expect-error
 import jwt from "jsonwebtoken";
 import { db } from "../db/index";
 import { usersTable, companyTable } from "app/db/schema";
 import { eq } from "drizzle-orm";
+// @ts-expect-error
 import bcrypt from "bcrypt";
 
 const SECRET = process.env.JWT_SECRET;

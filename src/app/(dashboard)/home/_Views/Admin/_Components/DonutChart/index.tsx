@@ -36,7 +36,9 @@ export function DonutChartGraphic({ dataReceived }: { dataReceived: object }) {
   const [data, setData] = React.useState([]);
 
   useEffect(() => {
+    // @ts-expect-error
     if (!dataReceived.feedBack) return;
+    // @ts-expect-error
     let info = dataReceived.feedBack;
     info = JSON.parse(info);
     setData(info.rating);

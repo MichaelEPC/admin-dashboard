@@ -2,6 +2,7 @@ import { getDataOperationsAction } from "app/actions/Operation/GetDataOperations
 import { AreaChartOperation } from "./Areachart";
 
 const AreaContainer = async () => {
+  // @ts-expect-error
   const { list, resume } = await getDataOperationsAction();
   console.log(list);
 

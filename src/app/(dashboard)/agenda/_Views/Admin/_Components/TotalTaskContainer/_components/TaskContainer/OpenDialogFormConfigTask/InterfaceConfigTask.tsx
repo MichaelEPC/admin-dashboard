@@ -16,7 +16,9 @@ const InterfaceConfigTask = ({
 
   useEffect(() => {
     const fetchData = async () => {
+      // @ts-expect-error
       const individualTask = await getIndividualTaskAction(id.id);
+      if (!individualTask) return;
       setTaskInfo(individualTask[0]);
     };
     fetchData();
@@ -30,6 +32,7 @@ const InterfaceConfigTask = ({
           id="task-name"
           name="taskName"
           type="text"
+          // @ts-expect-error
           value={taskInfo.name}
           disabled
         />
@@ -41,6 +44,7 @@ const InterfaceConfigTask = ({
           id="task-name"
           name="taskName"
           type="text"
+          // @ts-expect-error
           value={taskInfo.taskName}
         />
       </div>
@@ -52,6 +56,7 @@ const InterfaceConfigTask = ({
           id="task-name"
           name="taskName"
           type="text"
+          // @ts-expect-error
           value={taskInfo.taskState}
           disabled
         />
@@ -66,6 +71,7 @@ const InterfaceConfigTask = ({
           id="task-days"
           name="taskDays"
           type="number"
+          // @ts-expect-error
           value={taskInfo.taskDays}
           disabled
         />

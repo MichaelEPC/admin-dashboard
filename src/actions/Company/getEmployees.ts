@@ -6,6 +6,8 @@ export const getEmployees = async () => {
     const company = await getCompany();
     if (company === "none") return "Join a company";
     let employees = company?.employees;
+
+    if (!employees) return;
     employees = JSON.parse(employees);
     return employees;
   } catch (error) {}

@@ -9,11 +9,10 @@ export const getMyTaskAction = async () => {
     const taskList = await getTotalTaskAction();
     const user = await isUserLog();
     const individualTask = await Promise.all(
-      taskList.map(async (task) => {
+      taskList.map(async (task: any) => {
+        if (!user) return;
+
         if (task.id === user.id) {
-          if (!user) {
-            return;
-          }
           return { name: user.name, ...task };
         }
         return null;

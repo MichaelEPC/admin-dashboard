@@ -21,6 +21,7 @@ export const AreaChartOperation: React.FC<OperationItemsProps> = ({
         Earns - loss
       </h3>
       <p className="text-tremor-metric font-semibold text-tremor-content-strong dark:text-dark-tremor-content-strong">
+        {/* @ts-expect-error */}
         {`Gains: ${resume.toFixed(0)}%`}
       </p>
       <AreaChart

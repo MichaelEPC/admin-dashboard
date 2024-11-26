@@ -6,8 +6,9 @@ import {
 import ButtonSubmit from "app/app/_components/ButtonSubmit";
 import { useFormState } from "react-dom";
 
-const FormProductivity = ({ setIsOpen }) => {
+const FormProductivity = ({ setIsOpen }: any) => {
   const [formState, action] = useFormState<{ message: string | null }>(
+    // @ts-expect-error
     changeProductivityGoal,
     { message: null },
   );

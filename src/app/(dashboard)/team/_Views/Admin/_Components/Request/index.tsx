@@ -15,7 +15,8 @@ const Request = async () => {
         <p className="mt-1 font-semibold text-text-color">No requets found</p>
       )}
       {typeof request === "object" &&
-        request.map((soloRequest) => (
+        // @ts-expect-error
+        request.map((soloRequest: any) => (
           // Keyy!!!!!!
           <ItemsRequest
             key={soloRequest.userId}

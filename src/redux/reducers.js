@@ -1,9 +1,8 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import appSlice from "./appSlice"; // Importa tu slice
+import appSlice from "./appSlice";
 
 const rootReducer = combineReducers({
   some: appSlice,
-  // Añade otros reducers aquí
 });
 
 export default rootReducer;

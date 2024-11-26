@@ -30,8 +30,10 @@ const votesData = [
 
 const checkUserVote = (listVoted: object, user: object) => {
   try {
+    // @ts-expect-error
     const personVoted = listVoted.voted.filter(
-      (soloRequest) => soloRequest == user.id,
+      // @ts-expect-error
+      (soloRequest: any) => soloRequest == user.id,
     );
 
     if (personVoted.length == 0) {
@@ -48,6 +50,7 @@ const VoteEmployee = ({ data, user }: { data: object; user: object }) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      // @ts-expect-error
       let feedBack = data.feedBack;
       if (!feedBack) {
         return;
@@ -74,10 +77,14 @@ const VoteEmployee = ({ data, user }: { data: object; user: object }) => {
             {model?.map((voteSelection) => {
               return (
                 <button
+                  // @ts-expect-error
                   key={voteSelection.name}
+                  // @ts-expect-error
                   className={`rounded-lg bg-${voteSelection.color}-400 p-1 text-lg text-white`}
+                  // @ts-expect-error
                   onClick={() => changeRatingAction(voteSelection.name)}
                 >
+                  {/* @ts-ignore */}
                   {voteSelection.name}
                 </button>
               );

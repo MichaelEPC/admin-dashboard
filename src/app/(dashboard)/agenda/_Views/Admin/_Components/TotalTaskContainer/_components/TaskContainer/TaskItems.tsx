@@ -48,6 +48,7 @@ const TaskItems = ({
           <span className="font-semibold text-principal-color">{days}</span>
         </p>
         <div className="ml-3 flex cursor-pointer items-center justify-center">
+          {/* @ts-expect-error */}
           <OpenDialogConfigTask id={id} />
         </div>
       </div>

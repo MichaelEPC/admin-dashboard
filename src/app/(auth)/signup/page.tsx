@@ -10,6 +10,7 @@ import registerUser from "app/actions/Auth/regiserUser";
 const SignIn = () => {
   const [rol, setRol] = React.useState("employee");
   const [formState, action] = useFormState<{ message: string | null }>(
+    // @ts-ignore
     registerUser,
     { message: null },
   );

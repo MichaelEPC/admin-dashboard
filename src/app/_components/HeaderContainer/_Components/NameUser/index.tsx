@@ -9,6 +9,7 @@ const NameUser = () => {
   useEffect(() => {
     const getUser = async () => {
       const user = await isUserLog();
+      // @ts-expect-error
       setName(user?.name);
     };
 

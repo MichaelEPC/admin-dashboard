@@ -11,6 +11,7 @@ export const getTasksByEmployeesAction = async () => {
       return;
     }
 
+    if (!company.employees || !company.taskList) return;
     const employeesList = await JSON.parse(company.employees);
     const taskList = await JSON.parse(company.taskList);
 

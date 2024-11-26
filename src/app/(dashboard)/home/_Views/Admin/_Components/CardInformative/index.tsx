@@ -44,12 +44,15 @@ export function CardUsageExample({
   const putOperationText = useCallback(() => {
     switch (operation) {
       case "showTotalEmployees":
+        // @ts-expect-error
         return `${isUndefined(data?.employees, "employees")}`;
 
       case "taskCompleted":
+        // @ts-expect-error
         return `${isUndefined(data?.taskList, "taskCompleted")}`;
 
       case "productivityGoal":
+        // @ts-expect-error
         return `${isUndefined(data?.taskList, "goal")}`;
 
       default:

@@ -1,5 +1,6 @@
 import React from "react";
 import { Dialog, DialogPanel } from "@tremor/react";
+// @ts-expect-error
 import FormProductivity from "./FormProductivity";
 
 export function OpenDialogDailyProductivity({

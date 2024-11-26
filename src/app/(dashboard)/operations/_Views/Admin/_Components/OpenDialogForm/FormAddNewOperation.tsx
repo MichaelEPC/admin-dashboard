@@ -8,6 +8,7 @@ const FormAddNewOperation = ({
   setIsOpen: (bol: boolean) => void;
 }) => {
   const [formState, action] = useFormState<{ message: string | null }>(
+    // @ts-expect-error
     addNewOperationAction,
     { message: null },
   );

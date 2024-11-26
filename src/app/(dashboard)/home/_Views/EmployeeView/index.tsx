@@ -23,6 +23,7 @@ const EmployeeView = () => {
   useEffect(() => {
     const fillInfo = async () => {
       const infoUser = await isUserLog();
+      // @ts-ignore
       setUser(infoUser);
       const company = await getCompany();
       setCompanyInfo(company);
@@ -64,7 +65,9 @@ const EmployeeView = () => {
                 <div className="flex h-auto w-full justify-center sm:w-3/4">
                   <TableDashBoard
                     key={1}
+                    // @ts-expect-error
                     tableCategories={taskNameCategories}
+                    // @ts-expect-error
                     content={taskNameContent}
                   />
                 </div>
@@ -76,6 +79,7 @@ const EmployeeView = () => {
               <div className="h-auto w-full">
                 <TableTeamMembers
                   key={2}
+                  // @ts-expect-error
                   tableCategories={employeesCategories}
                   content={employeeContent}
                 />

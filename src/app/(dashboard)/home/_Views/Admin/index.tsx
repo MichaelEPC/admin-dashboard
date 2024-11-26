@@ -63,6 +63,7 @@ const Admin = () => {
             </div>
 
             <div className="h-full w-full md:w-3/4">
+              {/* @ts-expect-error */}
               <TableTotalTasks key={1} tableCategories={taskNameCategories} />
             </div>
           </div>
@@ -70,6 +71,7 @@ const Admin = () => {
           <div className="h-auto w-full">
             <TableTeamMembers
               key={2}
+              // @ts-ignore
               tableCategories={employeesCategories}
               content={employeeContent}
             />

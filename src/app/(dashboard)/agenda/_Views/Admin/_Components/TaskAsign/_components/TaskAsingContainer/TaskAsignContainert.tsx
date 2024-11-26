@@ -6,7 +6,7 @@ const TaskAsingContainer = async () => {
 
   return (
     <div className="h-auto w-full">
-      {taskByEmployees.map((employee) => {
+      {taskByEmployees.map((employee: any) => {
         return (
           <TaskAsignItem
             key={employee.employeeId}

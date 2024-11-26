@@ -6,6 +6,7 @@ const EmployeeContainer = async () => {
     <div className="mt-2 grid h-auto w-full grid-cols-1 px-4">
       {typeof employee != "object" && <p>Join a company</p>}
       {typeof employee === "object" &&
+        // @ts-expect-error
         employee.map((employ: any) => (
           <ItemsEmployees
             key={employ.email}

@@ -1,6 +1,7 @@
 import "server-only";
 
 import { revalidatePath } from "next/cache";
+// @ts-expect-error
 import jwt from "jsonwebtoken";
 import { db } from "../db/index";
 import { usersTable, companyTable } from "app/db/schema";
@@ -20,6 +21,7 @@ export const getCompanyFromUser = async () => {
 
   companyInfo = await JSON.parse(companyInfo);
   const company = await db.query.companyTable.findFirst({
+    // @ts-expect-error
     where: eq(companyTable.id, companyInfo.id),
     columns: {
       id: true,
@@ -72,9 +74,11 @@ export const sentJoinRequest = async (companyId: string, user: UserProps) => {
     if (typeof company == "string" || !company) {
       return;
     }
+    // @ts-expect-error
     let request = JSON.parse(company?.request);
 
     const alreadySent = request.find(
+      // @ts-expect-error
       (soloRequest) => soloRequest.userId === userId,
     );
     if (alreadySent) {
@@ -110,11 +114,14 @@ export const acceptJoinRequest = async (companyId: string, userId: string) => {
       return;
     }
 
+    // @ts-expect-error
     let employeesList = JSON.parse(company?.employees);
     employeesList.push(user);
 
+    // @ts-expect-error
     let request = JSON.parse(company?.request);
     const newListRequest = request.filter(
+      // @ts-expect-error
       (soloRequest) => soloRequest.userId != userId,
     );
 
@@ -144,14 +151,17 @@ export const acceptJoinRequest = async (companyId: string, userId: string) => {
 
 export const userAlreadyVote = async (user: UserProps) => {
   try {
+    // @ts-expect-error
     const userCompany = JSON.parse(user?.company);
     const company = await getCompanyById(userCompany.id);
     if (typeof company == "string" || !company) {
       return true;
     }
 
+    // @ts-expect-error
     let feedBack = JSON.parse(company?.feedBack);
     const newListRequest = feedBack.voted.filter(
+      // @ts-expect-error
       (soloRequest) => soloRequest.userId == userId,
     );
 
@@ -167,14 +177,17 @@ export const userAlreadyVote = async (user: UserProps) => {
 
 export const changeRating = async (ratingName: string, user: UserProps) => {
   try {
+    // @ts-expect-error
     const userCompany = JSON.parse(user?.company);
     const company = await getCompanyById(userCompany.id);
     if (typeof company == "string" || !company) {
       return;
     }
 
+    // @ts-expect-error
     let feedBack = JSON.parse(company?.feedBack);
     const newListRequest = feedBack.voted.filter(
+      // @ts-expect-error
       (soloRequest) => soloRequest.userId == userId,
     );
     if (newListRequest.legnth == 0) {

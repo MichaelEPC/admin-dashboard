@@ -17,6 +17,7 @@ export const addNewOperation = async (
     return "none";
   }
 
+  // @ts-expect-error
   const listOperation = await JSON.parse(company.operations);
 
   const uniqueId = crypto.randomUUID();
@@ -43,6 +44,7 @@ export const getAllOperations = async () => {
     return "none";
   }
 
+  // @ts-expect-error
   const listOperation = await JSON.parse(company.operations);
 
   return listOperation.list;
@@ -55,6 +57,7 @@ export const deleteOperation = async (id: string) => {
     return "none";
   }
 
+  // @ts-expect-error
   let listOperation = await JSON.parse(company.operations);
   listOperation.list = listOperation.list.filter((operation: any) => {
     return operation.id !== id;

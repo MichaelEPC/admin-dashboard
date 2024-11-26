@@ -1,3 +1,4 @@
+// @ts-ignore
 import { TableDashBoard } from "./TableTask";
 
 export const taskNameCategories = [

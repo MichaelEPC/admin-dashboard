@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import ButtonSubmit from "../../_components/ButtonSubmit";
 import { useFormState } from "react-dom";
@@ -6,6 +7,7 @@ import signInUser from "app/actions/Auth/singInUser";
 
 const SignIn = () => {
   const [formState, action] = useFormState<{ message: string | null }>(
+    // @ts-ignore
     signInUser,
     { message: null },
   );

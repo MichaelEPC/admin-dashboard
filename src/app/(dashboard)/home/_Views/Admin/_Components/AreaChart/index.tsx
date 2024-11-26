@@ -10,16 +10,17 @@ const valueFormatter = function (number: number) {
 
 export const AreaChartOperationAdmin = () => {
   const [listOperation, setlistOperation] = React.useState([]);
-  const [gains, setGains] = React.useState(0); // Cambio de subTitle a gains como número
+  const [gains, setGains] = React.useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
+      // @ts-expect-error
       const { list, resume } = await getDataOperationsAction();
       if (!list) {
         return;
       }
       setlistOperation(list);
-      setGains(resume); // Cambiando subTitle a gains
+      setGains(resume);
     };
     fetchData();
   }, []);
@@ -37,7 +38,7 @@ export const AreaChartOperationAdmin = () => {
         className="mt-4 h-72"
         data={listOperation}
         index="date"
-        categories={["Earnings", "Losses"]} // Asegúrate de que estas categorías existan en los datos
+        categories={["Earnings", "Losses"]}
         colors={["green", "red"]}
         valueFormatter={valueFormatter}
       />

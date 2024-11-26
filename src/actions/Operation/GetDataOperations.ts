@@ -115,9 +115,7 @@ export const getDataOperationsAction = async () => {
       totalLosses += parseFloat(operation.Losses);
     });
 
-    const resume =
-      ((parseFloat(totalEarnings) - parseFloat(totalLosses)) / totalEarnings) *
-      100;
+    const resume = ((totalEarnings - totalLosses) / totalEarnings) * 100;
     return { list, resume };
   } catch (error) {}
 };

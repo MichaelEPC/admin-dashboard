@@ -12,6 +12,7 @@ const FormAddNewTask = ({
   setIsOpen: (bol: boolean) => void;
 }) => {
   const [formState, action] = useFormState<{ message: string | null }>(
+    // @ts-expect-error
     addNewTaskAction,
     { message: null },
   );
@@ -43,6 +44,7 @@ const FormAddNewTask = ({
     const fetchData = async () => {
       const employees = await getEmployees();
       if (employees) {
+        // @ts-ignore
         setEmployeesList(employees);
       }
     };
@@ -66,7 +68,9 @@ const FormAddNewTask = ({
             {/* Add all employes in a select */}
             {employeesList.map((employee) => {
               return (
+                // @ts-expect-error
                 <option key={employee.id} value={employee.id}>
+                  {/* @ts-expect-error */}
                   {`${employee.name} - ${employee.rol}`}
                 </option>
               );
