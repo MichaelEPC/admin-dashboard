@@ -30,8 +30,6 @@ const votesData = [
 
 const checkUserVote = (listVoted: object, user: object) => {
   try {
-    console.log(user);
-
     const personVoted = listVoted.voted.filter(
       (soloRequest) => soloRequest == user.id,
     );
@@ -41,9 +39,7 @@ const checkUserVote = (listVoted: object, user: object) => {
     }
 
     return true;
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
 
 const VoteEmployee = ({ data, user }: { data: object; user: object }) => {
@@ -51,8 +47,6 @@ const VoteEmployee = ({ data, user }: { data: object; user: object }) => {
   const [userAlreadyVote, setUserAlreadyVote] = React.useState(false);
 
   useEffect(() => {
-    console.log(user);
-
     const fetchData = async () => {
       let feedBack = data.feedBack;
       if (!feedBack) {

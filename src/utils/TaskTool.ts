@@ -119,3 +119,38 @@ export const deleteTask = async (idTask: string) => {
     })
     .where(eq(companyTable.id, company.id));
 };
+
+export const completeTask = async (idTask: string) => {
+  const company = await getCompanyFromUser();
+
+  if (!company || company == "none") {
+    return;
+  }
+
+  const taskList = JSON.parse(company.taskList);
+  let taskLook = {};
+
+  taskList.pendingTask = await taskList.pendingTask.filter((task) => {
+    if (task.id !== idTask?.id) {
+      taskLook = task;
+      return false;
+    }
+    return true;
+  });
+
+  taskList.totalTask = await taskList.totalTask.filter((task: any) => {
+    if (task.id === idTask?.id || task.id === idTask) {
+      task.completed = true;
+    }
+    return true;
+  });
+
+  taskList.completedTask.push(taskLook);
+
+  await db
+    .update(companyTable)
+    .set({
+      taskList: JSON.stringify(taskList),
+    })
+    .where(eq(companyTable.id, company.id));
+};

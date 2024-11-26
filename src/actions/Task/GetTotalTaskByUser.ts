@@ -2,6 +2,7 @@
 
 import { getTotalTask } from "app/utils/TaskTool";
 import { isUserLog } from "../Auth/CheckUserSingIn";
+import { revalidatePath } from "next/cache";
 
 export const getTotalTaskByUserAction = async () => {
   try {
@@ -11,12 +12,14 @@ export const getTotalTaskByUserAction = async () => {
       return;
     }
 
-    const taskListByUser = res.map((task: any) => {
-      if (task.idEmployee === user.id) {
-        return { userName: user.name, ...task };
-      }
-    });
+    const taskListByUser = res
+      .filter((task: any) => task.idEmployee === user.id)
+      .map((task: any) => ({ userName: user.name, ...task }));
+
+    revalidatePath("/home");
 
     return taskListByUser;
-  } catch (error) {}
+  } catch (error) {
+    console.error("Error fetching tasks:", error);
+  }
 };

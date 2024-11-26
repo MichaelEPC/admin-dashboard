@@ -14,9 +14,9 @@ export const getTasksByEmployeesAction = async () => {
     const employeesList = await JSON.parse(company.employees);
     const taskList = await JSON.parse(company.taskList);
 
-    const employeesTasks = employeesList.map((employee) => {
+    const employeesTasks = employeesList.map((employee: any) => {
       let count = 0;
-      taskList.totalTask.map((task) => {
+      taskList.totalTask.map((task: any) => {
         if (employee.id === task.idEmployee) {
           count++;
         }

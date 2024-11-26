@@ -4,13 +4,6 @@
   position: absolute;
   top: 62.2px;
   left: 0px;
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
 }
 
 @media (min-width: 620px) {

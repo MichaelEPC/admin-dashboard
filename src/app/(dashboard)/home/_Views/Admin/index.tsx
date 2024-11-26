@@ -14,6 +14,8 @@ import { DonutChartGraphic } from "./_Components/DonutChart";
 import { CardUsageExample } from "./_Components/CardInformative";
 import { AreaChartOperationAdmin } from "./_Components/AreaChart";
 import { TableDashBoard } from "app/app/_components/TableTask";
+import { TableTotalTasks } from "./_Components/TableTasks";
+import { isUserLog } from "app/actions/Auth/CheckUserSingIn";
 
 const admin = () => {
   const [companyinfo, setCompanyInfo] = React.useState({});
@@ -53,15 +55,15 @@ const admin = () => {
           </div>
 
           {/* Opinions */}
-          <div className="flex h-auto w-full flex-col items-center gap-2 p-2 md:flex-row">
+          <div className="flex h-auto w-full flex-col justify-center gap-2 p-2 md:flex-row">
             <div className="flex h-auto w-full items-center justify-center md:w-1/3">
               <div className="flex h-auto w-full items-center justify-center rounded-lg border-2 border-ligh-gray bg-white p-2 py-4 shadow-md">
                 <CalloutCard />
               </div>
             </div>
 
-            <div className="flex h-full w-full flex-col items-center md:w-3/4">
-              <TableDashBoard tableCategories={taskNameCategories} />
+            <div className="h-full w-full md:w-3/4">
+              <TableTotalTasks key={1} tableCategories={taskNameCategories} />
             </div>
           </div>
 

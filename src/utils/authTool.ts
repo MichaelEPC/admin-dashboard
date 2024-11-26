@@ -99,57 +99,6 @@ export const signup = async ({
       .set({
         employees: JSON.stringify([
           {
-            name: name,
-            email: email,
-            cellphone: cellphone,
-            rol: rol,
-            job: "owner",
-          },
-        ]),
-        taskList: JSON.stringify({
-          goal: 0,
-          taskCompleted: 0,
-          completedTask: [],
-          pendingTask: [],
-        }),
-        feedBack: JSON.stringify({
-          letters: [],
-          rating: [
-            {
-              name: "Super Good",
-              color: "blue",
-              sales: 0,
-            },
-            {
-              name: "Good",
-              color: "cyan",
-              sales: 0,
-            },
-            {
-              name: "Medium",
-              color: "green",
-              sales: 0,
-            },
-            {
-              name: "Not well",
-              color: "yellow",
-              sales: 0,
-            },
-            {
-              name: "Bad",
-              color: "red",
-              sales: 0,
-            },
-          ],
-          voted: [],
-        }),
-      })
-      .where(eq(companyTable.id, company.id));
-    await db
-      .update(companyTable)
-      .set({
-        employees: JSON.stringify([
-          {
             id: rows[0].id,
             name: name,
             email: email,

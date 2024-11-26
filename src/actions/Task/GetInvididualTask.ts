@@ -7,7 +7,7 @@ export const getIndividualTaskAction = async (id: string) => {
   try {
     const taskList = await getTotalTaskAction();
     const individualTask = await Promise.all(
-      taskList.map(async (task) => {
+      taskList.map(async (task: any) => {
         if (task.id === id) {
           const user = await getUserFromId(task.idEmployee);
           if (!user) {

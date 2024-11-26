@@ -18,7 +18,7 @@ export const taskNameContent = [
 
 export const employeesCategories = [
   { category: "Employee" },
-  { category: "Rol" },
+  { category: "Contact" },
 ];
 
 export const employeeContent = [

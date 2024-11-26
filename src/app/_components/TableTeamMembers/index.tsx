@@ -22,10 +22,9 @@ export const TableTeamMembers = ({ tableCategories }: ControlProps) => {
   useEffect(() => {
     const fetchData = async () => {
       const employeesList = await getEmployees();
-      console.log(employeesList);
-
-      if (!employeesList) {
+      if (!employeesList || typeof employeesList === "string") {
         setEmployees([]);
+        return;
       }
       setEmployees(employeesList);
     };
@@ -33,14 +32,14 @@ export const TableTeamMembers = ({ tableCategories }: ControlProps) => {
   }, []);
   return (
     <div className="flex h-auto w-full flex-col items-center">
-      <h3 className="mt-2 text-2xl font-semibold text-text-color">
+      <h3 className="mb-2 mt-2 rounded-lg border-2 border-ligh-gray p-2 text-2xl font-semibold">
         Team members
       </h3>
       <div className="h-auto w-full border-2 border-ligh-gray bg-white shadow-md">
         <Table>
           <TableHead>
             <TableRow>
-              {tableCategories.map((table) => {
+              {tableCategories?.map((table) => {
                 return (
                   <TableHeaderCell key={table.category}>
                     {table.category}
@@ -51,11 +50,11 @@ export const TableTeamMembers = ({ tableCategories }: ControlProps) => {
           </TableHead>
 
           <TableBody>
-            {employees.map((employee: any) => {
+            {employees?.map((employee: any) => {
               return (
-                <TableRow key={employee.email}>
+                <TableRow key={employee?.email}>
                   <TableCell>{employee?.name}</TableCell>
-                  <TableCell>{formatShortName(employee?.email, 14)}</TableCell>
+                  <TableCell>{formatShortName(employee?.email, 32)}</TableCell>
                 </TableRow>
               );
             })}

@@ -1,11 +1,13 @@
-import TaskAsign from "./_Components/TaskAsign";
-import TotalTaskContainer from "./_Components/TotalTaskContainer";
+import { isUserLog } from "app/actions/Auth/CheckUserSingIn";
+import AdminAgenda from "./_Views/Admin";
+import EmployeeAgenda from "./_Views/Employee";
 
-const Agenda = () => {
+const Agenda = async () => {
+  const user = await isUserLog();
+
   return (
-    <div className="flex h-auto w-full flex-col items-center justify-between p-10 x3:flex-row x3:items-baseline">
-      <TotalTaskContainer />
-      <TaskAsign />
+    <div className="flex h-auto w-full flex-col items-center">
+      {user?.rol === "owner" ? <AdminAgenda /> : <EmployeeAgenda />}
     </div>
   );
 };

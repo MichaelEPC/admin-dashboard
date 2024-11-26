@@ -6,11 +6,12 @@ import OperationItemsContainer from "./_Components/OperationsItemsContainer";
 const Admin = () => {
   return (
     <section className="h-auto w-full">
-      <div className="ml-4 mt-2 flex h-auto w-full">
+      <div className="ml-4 mt-2 flex h-auto">
         <h2 className="text-2xl font-bold text-principal-color">Operations</h2>
       </div>
+
       <div className="flex h-auto w-full flex-col items-center py-4">
-        <div className="flex h-auto w-full flex-col items-center xl:flex-row xl:px-14">
+        <div className="flex h-auto w-full flex-col items-center xl:flex-row xl:px-10">
           <DonutOperationsContainer />
           <AreaContainer />
         </div>

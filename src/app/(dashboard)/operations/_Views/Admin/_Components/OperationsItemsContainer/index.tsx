@@ -6,7 +6,7 @@ const OperationItemsContainer = async () => {
   console.log(operationList);
 
   return (
-    <div className="flex h-auto w-72 flex-col rounded-lg border-2 border-ligh-gray bg-white p-2 shadow-md xl:w-full">
+    <div className="mt-2 flex h-auto w-72 flex-col rounded-lg border-2 border-ligh-gray bg-white p-2 shadow-md xl:w-full">
       {operationList.map((operation: any) => {
         return (
           <OperationItems

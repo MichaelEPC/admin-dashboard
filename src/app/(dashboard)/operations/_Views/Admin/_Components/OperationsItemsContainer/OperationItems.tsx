@@ -1,4 +1,5 @@
 import { OpenDialogConfigOperation } from "./_Components/OpenDialogForm/OpenDialogConfigOperation";
+import { formatShortName } from "app/utils/generalTools";
 
 interface OperationItemsProps {
   id: string;
@@ -16,30 +17,33 @@ const OperationItems: React.FC<OperationItemsProps> = ({
   month,
 }) => {
   return (
-    <div className="mb-1 flex flex-col items-center justify-between rounded-lg border-b-2 border-ligh-gray xl:flex-row xl:pr-20">
-      <p className="mb-2 text-lg font-semibold xl:mb-0">
-        Name: <span className="text-principal-color">{` ${name}`}</span>
-      </p>
+    <div className="xl: mb-1 flex flex-col items-center justify-between border-b-2 border-ligh-gray px-2 py-2 xl:relative xl:flex-row">
+      <div className="h-auto xl:w-96">
+        <p className="mb-2 text-lg font-semibold xl:mb-0">
+          Name:
+          <span className="text-principal-color">{` ${formatShortName(name, 22)}`}</span>
+        </p>
+      </div>
 
-      <p className="mb-2 text-lg font-semibold xl:mb-0">
-        Amount:
-        <span
-          className={category === "win" ? "text-green-400" : "text-red-500"}
-        >
-          {` ${amount}`}
-        </span>
-      </p>
+      <div className="h-auto xl:w-52">
+        <p className={`mb-2 text-lg font-semibold xl:sticky xl:mb-0`}>
+          Amount:
+          <span className="font-semibold text-text-color">{` ${amount}$`}</span>
+        </p>
+      </div>
 
-      <p className="mb-2 text-lg font-semibold xl:mb-0">
-        Category:
-        <span
-          className={category === "win" ? "text-green-400" : "text-red-500"}
-        >
-          {` ${category}`}
-        </span>
-      </p>
+      <div className="h-auto xl:w-52">
+        <p className={`mb-2 text-lg font-semibold xl:sticky xl:mb-0`}>
+          Category:
+          <span
+            className={category === "win" ? "text-green-400" : "text-red-500"}
+          >
+            {` ${category}`}
+          </span>
+        </p>
+      </div>
 
-      <div className="flex items-center">
+      <div className={`flex h-auto items-center xl:w-52`}>
         <p className="mb-2 text-lg font-semibold xl:mb-0">
           Month: <span className="text-principal-color">{` ${month}`}</span>
         </p>

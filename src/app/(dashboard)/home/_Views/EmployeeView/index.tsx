@@ -56,14 +56,8 @@ const EmployeeView = () => {
         {typeof companyinfo === "object" ? (
           <section className="h-auto w-full x2:px-40">
             <div className="mt-4 grid h-auto w-full grid-cols-2 gap-3">
-              <CardUsageEmployees
-                operation="taskToComplete"
-                data={{ ...companyinfo }}
-              />
-              <CardUsageEmployees
-                operation="taskCompleted"
-                data={{ ...companyinfo }}
-              />
+              <CardUsageEmployees operation="taskCompleted" />
+              <CardUsageEmployees operation="taskAsign" />
             </div>
             <div className="mt-10 x2:px-12 x4:px-52">
               <div className="flex h-auto w-full flex-col items-center justify-center gap-2 p-2 sm:flex-row">

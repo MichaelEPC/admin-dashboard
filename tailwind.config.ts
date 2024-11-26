@@ -35,7 +35,6 @@ const config: Config = {
 
       x3: "1700px",
       // => @media (min-width: 1700px) { ... }
-
       x4: "2000px",
       // => @media (min-width: 2000px) { ... }
     },
