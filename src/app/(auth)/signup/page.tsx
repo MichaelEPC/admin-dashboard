@@ -7,7 +7,7 @@ import style from "./style.module.css";
 import { useFormState } from "react-dom";
 import registerUser from "app/actions/Auth/regiserUser";
 
-const signIn = () => {
+const SignIn = () => {
   const [rol, setRol] = React.useState("employee");
   const [formState, action] = useFormState<{ message: string | null }>(
     registerUser,
@@ -123,4 +123,4 @@ const signIn = () => {
   );
 };
 
-export default signIn;
+export default SignIn;

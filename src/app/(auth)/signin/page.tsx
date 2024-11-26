@@ -4,7 +4,7 @@ import ButtonSubmit from "../../_components/ButtonSubmit";
 import { useFormState } from "react-dom";
 import signInUser from "app/actions/Auth/singInUser";
 
-const signIn = () => {
+const SignIn = () => {
   const [formState, action] = useFormState<{ message: string | null }>(
     signInUser,
     { message: null },
@@ -58,4 +58,4 @@ const signIn = () => {
   );
 };
 
-export default signIn;
+export default SignIn;
