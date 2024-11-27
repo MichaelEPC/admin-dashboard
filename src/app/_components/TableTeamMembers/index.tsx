@@ -61,6 +61,13 @@ export const TableTeamMembers = ({ tableCategories }: ControlProps) => {
           </TableBody>
         </Table>
       </div>
+      {employees.length === 0 ? (
+        <div className="border-b-2 border-principal-color p-1">
+          <p className="font-semibold">¡No employees yet!</p>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

@@ -9,11 +9,9 @@ const TaskCompletedContainer = async () => {
       <h3 className="mb-2 text-2xl font-bold text-principal-color">
         Task completed:
       </h3>
-      <div className="bg-white shadow-md">
+      <div className="rounded-lg bg-white p-1 shadow-md ring-2 ring-ligh-gray">
         {totalTask.length === 0 ? (
-          <p className="mt-2 text-lg font-semibold text-test-color underline">
-            No task yet completed
-          </p>
+          <p className="mt-2 text-lg font-semibold">No task yet completed</p>
         ) : (
           totalTask.map((task: any) => {
             return (

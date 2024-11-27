@@ -71,7 +71,7 @@ const EmployeeView = () => {
                     content={taskNameContent}
                   />
                 </div>
-                <div className="flex h-80 w-full flex-col items-center justify-center rounded-lg border-2 border-ligh-gray bg-white py-4 shadow-md sm:w-2/5">
+                <div className="flex h-auto w-auto flex-col items-center justify-center rounded-lg bg-white py-4 shadow-md ring-1 ring-ligh-gray sm:w-2/5">
                   <VoteEmployee data={{ ...companyinfo }} user={{ ...user }} />
                 </div>
               </div>

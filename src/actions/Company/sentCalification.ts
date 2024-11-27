@@ -11,6 +11,6 @@ export const changeRatingAction = async (nameCalification: string) => {
       return;
     }
     await changeRating(nameCalification, user);
-    revalidatePath("/home");
   } catch (error) {}
+  revalidatePath("/home");
 };

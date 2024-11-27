@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken";
 import { db } from "../db/index";
 import { usersTable, companyTable } from "app/db/schema";
 import { eq } from "drizzle-orm";
-import { getUserFromId, getUserFromToken } from "./authTool";
+import { getUserFromId } from "./authTool";
 import { isUserLog } from "app/actions/Auth/CheckUserSingIn";
 import { UserProps } from "./Interfaces";
 
@@ -149,6 +149,33 @@ export const acceptJoinRequest = async (companyId: string, userId: string) => {
   }
 };
 
+export const denyJoinRequest = async (companyId: string, userId: string) => {
+  try {
+    const company = await getCompanyById(companyId);
+    if (typeof company == "string" || !company) {
+      return;
+    }
+
+    // @ts-expect-error
+    let request = JSON.parse(company?.request);
+    const newListRequest = request.filter(
+      // @ts-expect-error
+      (soloRequest) => soloRequest.userId != userId,
+    );
+
+    await db
+      .update(companyTable)
+      .set({
+        request: JSON.stringify(newListRequest),
+      })
+      .where(eq(companyTable.id, companyId));
+
+    revalidatePath("/team");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const userAlreadyVote = async (user: UserProps) => {
   try {
     // @ts-expect-error
@@ -177,6 +204,12 @@ export const userAlreadyVote = async (user: UserProps) => {
 
 export const changeRating = async (ratingName: string, user: UserProps) => {
   try {
+    const user = await isUserLog();
+
+    if (await userAlreadyVote(user)) {
+      return;
+    }
+
     // @ts-expect-error
     const userCompany = JSON.parse(user?.company);
     const company = await getCompanyById(userCompany.id);
@@ -188,7 +221,7 @@ export const changeRating = async (ratingName: string, user: UserProps) => {
     let feedBack = JSON.parse(company?.feedBack);
     const newListRequest = feedBack.voted.filter(
       // @ts-expect-error
-      (soloRequest) => soloRequest.userId == userId,
+      (soloRequest) => soloRequest.userId == user.id,
     );
     if (newListRequest.legnth == 0) {
       return;
@@ -226,9 +259,8 @@ export const changeRating = async (ratingName: string, user: UserProps) => {
         feedBack: JSON.stringify(feedBack),
       })
       .where(eq(companyTable.id, company.id));
-
-    revalidatePath("/home");
   } catch (error) {
     console.log(error);
   }
+  revalidatePath("/home");
 };

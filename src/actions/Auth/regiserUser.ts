@@ -1,4 +1,5 @@
 "use server";
+
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { signup } from "../../utils/authTool";
@@ -16,16 +17,16 @@ const userSchema = z.object({
 });
 
 const registerUser = async (prevState: any, formData: FormData) => {
-  const userData = userSchema.parse({
-    email: formData.get("email"),
-    name: formData.get("name"),
-    cellphone: formData.get("cellphone"),
-    rol: formData.get("rol"),
-    password: formData.get("password"),
-    companyName: formData.get("companyName"),
-    companyCategory: formData.get("companyCategory"),
-  });
   try {
+    const userData = userSchema.parse({
+      email: formData.get("email"),
+      name: formData.get("name"),
+      cellphone: formData.get("cellphone"),
+      rol: formData.get("rol"),
+      password: formData.get("password"),
+      companyName: formData.get("companyName"),
+      companyCategory: formData.get("companyCategory"),
+    });
     const { token } = await signup({ ...userData });
     cookies().set(COOKIE_NAME, token);
   } catch (error) {

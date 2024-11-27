@@ -9,7 +9,7 @@ export const isUserLog = async () => {
   if (!cookieToken) {
     redirect("/signin");
   }
-  const user = getUserFromToken(cookieToken);
+  const user = await getUserFromToken(cookieToken);
   if (!user) {
     redirect("/signin");
   }

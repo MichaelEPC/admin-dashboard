@@ -80,7 +80,7 @@ export function CardUsageExample({
         case "employees":
           return `${list.length}`;
         case "goal":
-          return `${list?.taskCompleted}/${list?.goal}`;
+          return `${list?.completedTask.length}/${list?.goal}`;
         case "taskCompleted":
           return `${list?.completedTask.length}`;
 

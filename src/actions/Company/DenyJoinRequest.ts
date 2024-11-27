@@ -1,14 +1,14 @@
 "use server";
 
-import { acceptJoinRequest } from "app/utils/companyTools";
+import { denyJoinRequest } from "app/utils/companyTools";
 import { revalidatePath } from "next/cache";
 
-export const acceptJoinRequestAction = async (
+export const denyJoinRequestAction = async (
   companyId: string,
   userId: string,
 ) => {
   try {
-    await acceptJoinRequest(companyId, userId);
+    await denyJoinRequest(companyId, userId);
     revalidatePath("/team");
   } catch (error) {}
 };

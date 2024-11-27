@@ -65,6 +65,13 @@ export const TableDashBoard = ({ tableCategories }: ControlProps) => {
           </TableBody>
         </Table>
       </div>
+      {tasks.length === 0 ? (
+        <div className="border-b-2 border-principal-color p-1">
+          <p className="font-semibold">¡No task asign yet!</p>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

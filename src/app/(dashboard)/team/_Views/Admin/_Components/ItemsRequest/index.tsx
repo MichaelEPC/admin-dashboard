@@ -1,6 +1,7 @@
 "use client";
 
 import { acceptJoinRequestAction } from "app/actions/Company/AcceptJoinRequest";
+import { denyJoinRequestAction } from "app/actions/Company/DenyJoinRequest";
 import style from "./style.module.css";
 
 const ItemsRequest = ({
@@ -15,7 +16,7 @@ const ItemsRequest = ({
   email: string;
 }) => {
   return (
-    <article className="mt-2 flex h-12 w-full flex-row items-center justify-around rounded-lg border-2 border-ligh-gray">
+    <article className="mt-2 flex h-12 w-full flex-row items-center justify-around rounded-lg border-2 border-ligh-gray shadow-md">
       <div className="flex h-auto justify-center">
         <svg
           className="h-10 w-10 fill-test-color"
@@ -46,6 +47,9 @@ const ItemsRequest = ({
         </div>
         <div
           className={`duration-400 cursor-pointer rounded-lg transition-all ${style.deleteBox}`}
+          onClick={() => {
+            denyJoinRequestAction(companyId, userId);
+          }}
         >
           <svg
             className={`h-12 w-12 ${style.deleteSvg}`}

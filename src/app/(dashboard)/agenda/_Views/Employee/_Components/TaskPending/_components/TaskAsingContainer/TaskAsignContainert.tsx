@@ -9,8 +9,8 @@ const TaskPendingContainer = async () => {
   return (
     <div className="h-auto w-full rounded-lg shadow-md">
       {taskPending.length == 0 ? (
-        <p className="mt-2 text-lg font-semibold text-test-color underline">
-          You dont have task pending!
+        <p className="mt-2 rounded-lg p-2 text-lg font-semibold ring-2 ring-ligh-gray">
+          You dont have task pending
         </p>
       ) : (
         taskPending.map((task: any) => {

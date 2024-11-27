@@ -4,27 +4,23 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import { changeRatingAction } from "app/actions/Company/sentCalification";
 import checkImage from "app/Images/Yes_Check_Circle.svg.png";
+import style from "./style.module.css";
 
 const votesData = [
   {
     name: "Super Good",
-    color: "blue",
   },
   {
     name: "Good",
-    color: "cyan",
   },
   {
     name: "Medium",
-    color: "green",
   },
   {
     name: "Not well",
-    color: "yellow",
   },
   {
     name: "Bad",
-    color: "red",
   },
 ];
 
@@ -67,20 +63,21 @@ const VoteEmployee = ({ data, user }: { data: object; user: object }) => {
   }, [data]);
 
   return (
-    <div className="flex h-auto w-full flex-col items-center justify-center p-4">
+    <div
+      className={`flex h-auto w-full flex-col items-center justify-center p-5 ${style.ExperienceContainer}`}
+    >
       {!userAlreadyVote ? (
         <>
-          <h3 className="mb-2 text-2xl font-semibold text-text-color underline">
+          <h3 className="mb-2 mt-1 text-2xl font-semibold text-principal-color">
             Rate your experience
           </h3>
-          <div className="grid h-auto w-full grid-cols-1 gap-4">
+          <div className="mb-1 grid h-auto w-full grid-cols-1 gap-4">
             {model?.map((voteSelection) => {
               return (
                 <button
                   // @ts-expect-error
                   key={voteSelection.name}
-                  // @ts-expect-error
-                  className={`rounded-lg bg-${voteSelection.color}-400 p-1 text-lg text-white`}
+                  className={`rounded-lg border-2 border-ligh-gray bg-white p-1 text-lg text-black shadow-md transition-all duration-200 hover:bg-principal-color hover:font-semibold hover:text-white`}
                   // @ts-expect-error
                   onClick={() => changeRatingAction(voteSelection.name)}
                 >
@@ -90,15 +87,12 @@ const VoteEmployee = ({ data, user }: { data: object; user: object }) => {
               );
             })}
           </div>
-          <h4 className="mt-1 font-semibold text-text-color">
-            This feed will be anonymus, you can be totally honest
-          </h4>
         </>
       ) : (
         <>
           <div className="flex flex-col items-center">
             <h3 className="text-center text-2xl font-semibold text-principal-color">
-              Thank you, feel free sharing your experience
+              Thank you it will help to improve your experience
             </h3>
             <div className="relative mt-6 h-auto w-32">
               <Image src={checkImage} alt="check" />

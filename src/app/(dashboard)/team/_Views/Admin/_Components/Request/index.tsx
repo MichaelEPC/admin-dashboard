@@ -3,7 +3,6 @@ import { getJoinRequest } from "app/actions/Company/getJoinRequest";
 
 const Request = async () => {
   const request = await getJoinRequest();
-  console.log(request);
 
   return (
     <div className="flex h-auto w-full flex-col items-center rounded-lg bg-white p-2 x3:w-full">
@@ -17,7 +16,6 @@ const Request = async () => {
       {typeof request === "object" &&
         // @ts-expect-error
         request.map((soloRequest: any) => (
-          // Keyy!!!!!!
           <ItemsRequest
             key={soloRequest.userId}
             companyId={soloRequest.companyId}
