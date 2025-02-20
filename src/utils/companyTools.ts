@@ -31,6 +31,7 @@ export const getCompanyFromUser = async () => {
       employees: true,
       feedBack: true,
       operations: true,
+      cashflow: true,
     },
   });
   if (!company) {
@@ -60,6 +61,7 @@ export const getCompanyById = async (companyId: string) => {
       request: true,
       employees: true,
       feedBack: true,
+      cashflow: true,
     },
   });
   if (!company) {
@@ -250,8 +252,6 @@ export const changeRating = async (ratingName: string, user: UserProps) => {
     }
 
     feedBack.voted.push(user.id);
-
-    console.log(feedBack);
 
     await db
       .update(companyTable)

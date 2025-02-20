@@ -19,6 +19,8 @@ export const AreaChartOperationAdmin = () => {
       if (!list) {
         return;
       }
+      console.log(list);
+
       setlistOperation(list);
       setGains(resume);
     };

@@ -1,7 +1,8 @@
-import AreaContainer from "./_Components/AreaContainer/indext";
 import DonutOperationsContainer from "./_Components/DonutContainer";
 import { OpenDialogAddOperation } from "./_Components/OpenDialogForm/OpenDialogAddTask";
 import OperationItemsContainer from "./_Components/OperationsItemsContainer";
+import EarningsChartContainer from "./_Components/EarningsContainer";
+import { AreaChartHero } from "./_Components/AreaChartHero";
 
 const Admin = () => {
   return (
@@ -12,8 +13,7 @@ const Admin = () => {
 
       <div className="flex h-auto w-full flex-col items-center py-4">
         <div className="flex h-auto w-full flex-col items-center xl:flex-row xl:px-10">
-          <DonutOperationsContainer />
-          <AreaContainer />
+          <EarningsChartContainer />
         </div>
 
         <div className="mt-4 h-auto w-full px-5 xl:px-10">
@@ -26,6 +26,7 @@ const Admin = () => {
 
           <div className="flex h-auto w-full justify-center">
             <OperationItemsContainer />
+            <AreaChartHero />
           </div>
         </div>
       </div>

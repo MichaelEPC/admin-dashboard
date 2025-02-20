@@ -21,11 +21,14 @@ export const usersTable = sqliteTable("users", {
 });
 
 export const companyTable = sqliteTable("company", {
+  // Ones that we use
   id: id(),
   name: text("name").notNull(),
   category: text("category").notNull(),
   employees: makeAList("employees"),
   request: makeAList("request"),
+  cashflow: makeAList("cashflow"),
+  // we dont use
   taskList: makeAList("taskList"),
   operations: makeAList("operations"),
   feedBack: makeAList("feedBack"),
