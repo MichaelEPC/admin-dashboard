@@ -3,6 +3,7 @@ import { OpenDialogAddOperation } from "./_Components/OpenDialogForm/OpenDialogA
 import OperationItemsContainer from "./_Components/OperationsItemsContainer";
 import EarningsChartContainer from "./_Components/EarningsContainer";
 import MonthExpensesChartContainer from "./_Components/MonthExpenses";
+import { ComboChartOperation } from "./_Components/SellsContainer/SellsChart/Areachart";
 
 const Admin = () => {
   return (
@@ -19,6 +20,7 @@ const Admin = () => {
         <div className="mt-4 h-auto w-full px-5 xl:px-10">
           <div className="h-auto w-full">
             <MonthExpensesChartContainer />
+            <ComboChartOperation list={[]} />
           </div>
         </div>
       </div>

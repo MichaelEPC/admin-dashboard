@@ -11,7 +11,7 @@ interface props {
   list: [];
   years: number[];
 }
-const EarningsChart = ({ list, years }: props) => {
+const SellsChart = ({ list, years }: props) => {
   const [year, setYear] = React.useState(getRecentYear(list));
   // @ts-ignore
   const [data, setData] = React.useState(filterData(list, getRecentYear(list)));
@@ -26,7 +26,7 @@ const EarningsChart = ({ list, years }: props) => {
       <div className="flex items-center justify-between">
         <div className="relative flex h-auto w-32 skew-x-3 items-center rounded-md bg-gradient-to-r from-principal-color to-second-color px-6 py-2 shadow-lg graphicmb:w-52 graphicsm:w-72">
           <span className="font-bold uppercase tracking-wide text-white">
-            Cash flow
+            Sells Container
           </span>
           <div className="absolute right-4 flex -skew-x-6 space-x-1">
             <div className="h-4 w-1 bg-white"></div>
@@ -66,4 +66,4 @@ const EarningsChart = ({ list, years }: props) => {
   );
 };
 
-export default EarningsChart;
+export default SellsChart;

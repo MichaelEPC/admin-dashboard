@@ -1,8 +1,8 @@
 import { getYearsWorked } from "../../utils/General";
 import { getCashFlowAction } from "../../utils/GetNewCashFlow";
-import EarningsChart from "./EarningsChart";
+import SellsChart from "./SellsChart";
 
-const EarningsChartContainer = async () => {
+const SellsChartContainer = async () => {
   // @ts-ignore
   const list = await getCashFlowAction();
 
@@ -12,9 +12,9 @@ const EarningsChartContainer = async () => {
 
   return (
     <div>
-      <EarningsChart list={list} years={years} />
+      <SellsChart list={list} years={years} />
     </div>
   );
 };
 
-export default EarningsChartContainer;
+export default SellsChartContainer;
