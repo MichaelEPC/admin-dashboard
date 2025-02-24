@@ -20,7 +20,6 @@ const ShowMoreContainer = ({ list, years }: ControlProps) => {
     // @ts-ignore
     setData(filterData(list, year));
   }, [year]);
-
   return (
     <>
       <button

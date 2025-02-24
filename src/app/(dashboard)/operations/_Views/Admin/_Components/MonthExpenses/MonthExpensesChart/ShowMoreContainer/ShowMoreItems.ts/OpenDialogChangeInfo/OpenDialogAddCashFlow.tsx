@@ -3,23 +3,16 @@
 import React from "react";
 import { Dialog, DialogPanel } from "@tremor/react";
 import FormChangeInformation from "./FormChangeInformation";
-import { deleteCashFlowsAction } from "app/app/(dashboard)/operations/_Views/Admin/utils/DeleteCashFlow";
+import deleteMonthExpenseAction from "app/app/(dashboard)/operations/_Views/Admin/utils/DeleteMonthExpense";
 
 interface ControlProps {
   id: string;
   name: string;
   amount: number | string;
   date: string;
-  category: string;
 }
 
-export function ChangeInformation({
-  id,
-  name,
-  amount,
-  date,
-  category,
-}: ControlProps) {
+export function ChangeInformation({ id, name, amount, date }: ControlProps) {
   const [isOpen, setIsOpen] = React.useState(false);
   return (
     <>
@@ -27,7 +20,7 @@ export function ChangeInformation({
         onClick={() => {
           setIsOpen(true);
         }}
-        className="ml-2 h-6 w-6"
+        className="ml-2 h-6 w-6 cursor-pointer"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
       >
@@ -43,7 +36,7 @@ export function ChangeInformation({
             <div
               className="absolute top-[500px] cursor-pointer rounded-lg bg-red-500 p-1 mb:right-0 mb:top-0"
               onClick={async () => {
-                await deleteCashFlowsAction(id);
+                await deleteMonthExpenseAction(id);
                 setIsOpen(false);
               }}
             >
@@ -60,7 +53,6 @@ export function ChangeInformation({
             setIsOpen={setIsOpen}
             id={id}
             name={name}
-            category={category}
             amount={amount}
             date={date}
           />

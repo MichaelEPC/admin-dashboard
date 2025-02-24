@@ -4,6 +4,8 @@ CREATE TABLE `company` (
 	`category` text NOT NULL,
 	`employees` text,
 	`request` text,
+	`cashflow` text,
+	`monthlyExpenses` text,
 	`taskList` text,
 	`operations` text,
 	`feedBack` text,

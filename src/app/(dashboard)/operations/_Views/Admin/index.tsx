@@ -2,7 +2,7 @@ import DonutOperationsContainer from "./_Components/DonutContainer";
 import { OpenDialogAddOperation } from "./_Components/OpenDialogForm/OpenDialogAddTask";
 import OperationItemsContainer from "./_Components/OperationsItemsContainer";
 import EarningsChartContainer from "./_Components/EarningsContainer";
-import { AreaChartHero } from "./_Components/AreaChartHero";
+import MonthExpensesChartContainer from "./_Components/MonthExpenses";
 
 const Admin = () => {
   return (
@@ -17,16 +17,8 @@ const Admin = () => {
         </div>
 
         <div className="mt-4 h-auto w-full px-5 xl:px-10">
-          <div className="flex items-center">
-            <h2 className="mr-4 text-2xl font-semibold text-text-color">
-              Last works
-            </h2>
-            <OpenDialogAddOperation />
-          </div>
-
-          <div className="flex h-auto w-full justify-center">
-            <OperationItemsContainer />
-            <AreaChartHero />
+          <div className="h-auto w-full">
+            <MonthExpensesChartContainer />
           </div>
         </div>
       </div>

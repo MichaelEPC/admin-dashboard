@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "c7dc39e1-a629-4d51-8ab5-e007df06eebe",
+  "id": "cc7946fc-6efa-4bc4-833a-8fe60fa0b8ae",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "company": {
@@ -37,6 +37,20 @@
         },
         "request": {
           "name": "request",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "cashflow": {
+          "name": "cashflow",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "monthlyExpenses": {
+          "name": "monthlyExpenses",
           "type": "text",
           "primaryKey": false,
           "notNull": false,

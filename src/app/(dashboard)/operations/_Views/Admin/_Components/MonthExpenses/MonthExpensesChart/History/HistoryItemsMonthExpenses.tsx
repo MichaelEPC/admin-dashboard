@@ -11,7 +11,7 @@ interface Props {
   };
 }
 
-const HistoryItemsEarnings = ({ cashflow }: Props) => {
+const HistoryItemsMonthExpenses = ({ cashflow }: Props) => {
   return (
     <article className="relative mb-2 flex h-10 w-full skew-x-1 items-center justify-center bg-gradient-to-r from-principal-color to-second-color px-20 py-1 graphicmd:justify-between">
       <div className="mr-2 h-auto w-6 rounded-full bg-white graphicmd:mr-0">
@@ -37,4 +37,4 @@ const HistoryItemsEarnings = ({ cashflow }: Props) => {
   );
 };
 
-export default HistoryItemsEarnings;
+export default HistoryItemsMonthExpenses;

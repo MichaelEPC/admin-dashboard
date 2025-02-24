@@ -2,9 +2,9 @@
 
 import React from "react";
 import { Dialog, DialogPanel } from "@tremor/react";
-import FormAddCashFlow from "./FormAddCashFlow";
+import FormAddMonthExpenses from "./FormAddMonthExpenses";
 
-export function OpenDialogAddCashFlow() {
+export function OpenDialogAddMonthExpenses() {
   const [isOpen, setIsOpen] = React.useState(false);
   return (
     <>
@@ -20,10 +20,10 @@ export function OpenDialogAddCashFlow() {
         <DialogPanel>
           <div className="flex h-auto w-full items-center justify-center">
             <h3 className="mb-4 text-3xl font-bold text-principal-color dark:text-dark-tremor-content-strong">
-              Cash Flow
+              Month Expenses
             </h3>
           </div>
-          <FormAddCashFlow setIsOpen={setIsOpen} />
+          <FormAddMonthExpenses setIsOpen={setIsOpen} />
         </DialogPanel>
       </Dialog>
     </>

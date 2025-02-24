@@ -100,6 +100,7 @@ export const signup = async ({
       .update(companyTable)
       .set({
         cashflow: JSON.stringify([]),
+        monthlyExpenses: JSON.stringify([]),
         employees: JSON.stringify([
           {
             id: rows[0].id,

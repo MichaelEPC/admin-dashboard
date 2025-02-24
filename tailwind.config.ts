@@ -10,13 +10,22 @@ const config: Config = {
   ],
   theme: {
     screens: {
+      graphicmb: "450px",
+      // => @media (min-width: 640px) { ... }
+
       mb: "500px",
       // => @media (min-width: 550px) { ... }
 
+      graphicsm: "540px",
+      // => @media (min-width: 540px) { ... }
+
       sm: "620px",
-      // => @media (min-width: 640px) { ... }
+      // => @media (min-width: 620px) { ... }
 
       semimd: "700px",
+      // => @media (min-width: 700px) { ... }
+
+      graphicmd: "780px",
       // => @media (min-width: 700px) { ... }
 
       md: "880px",
