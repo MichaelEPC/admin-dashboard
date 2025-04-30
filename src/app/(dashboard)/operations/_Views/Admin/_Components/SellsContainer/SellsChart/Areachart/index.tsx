@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { ComboChart, type TooltipProps } from "@/components/ComboChart";
+import { ComboChart, type TooltipProps } from "@tremor/react";
 import { nameMonthOnList } from "../../../../utils/General";
 
 const dataa = [

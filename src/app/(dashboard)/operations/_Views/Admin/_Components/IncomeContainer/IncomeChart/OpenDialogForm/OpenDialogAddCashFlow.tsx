@@ -2,28 +2,28 @@
 
 import React from "react";
 import { Dialog, DialogPanel } from "@tremor/react";
-import FormAddNewOperation from "./FormAddNewOperation";
+import FormAddIncome from "./FormAddIncome";
 
-export function OpenDialogAddOperation() {
+export function OpenDialogAddCashFlow() {
   const [isOpen, setIsOpen] = React.useState(false);
   return (
     <>
       <button
-        className="block rounded-lg bg-principal-color p-1 text-lg text-white"
+        className="block rounded-lg bg-principal-color p-2 text-lg font-semibold text-white"
         onClick={() => {
           setIsOpen(true);
         }}
       >
-        New operation +
+        Add
       </button>
       <Dialog open={isOpen} onClose={(val) => setIsOpen(val)} static={true}>
         <DialogPanel>
           <div className="flex h-auto w-full items-center justify-center">
-            <h3 className="mb-4 text-2xl font-semibold text-principal-color dark:text-dark-tremor-content-strong">
-              New operation
+            <h3 className="mb-4 text-3xl font-bold text-principal-color dark:text-dark-tremor-content-strong">
+              Income
             </h3>
           </div>
-          <FormAddNewOperation setIsOpen={setIsOpen} />
+          <FormAddIncome setIsOpen={setIsOpen} />
         </DialogPanel>
       </Dialog>
     </>

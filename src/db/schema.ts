@@ -29,6 +29,8 @@ export const companyTable = sqliteTable("company", {
   request: makeAList("request"),
   cashflow: makeAList("cashflow"),
   monthlyExpenses: makeAList("monthlyExpenses"),
+  incomes: makeAList("incomes"),
+  mostProductSold: makeAList("mostProductsSold"),
   // we dont use
   taskList: makeAList("taskList"),
   operations: makeAList("operations"),

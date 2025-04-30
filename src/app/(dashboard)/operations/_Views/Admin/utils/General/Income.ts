@@ -4,7 +4,7 @@ interface Props {
 
 export const getYearsWorked = ({ list }: Props): number[] => {
   // @ts-ignore
-  if (!list || list.length === 0) return "---";
+  if (list.length === 0) return "---";
 
   const years = list.map((singleData) => {
     // @ts-ignore
@@ -88,62 +88,74 @@ export const nameMonthOnList = ({ list }: Props) => {
   const listFormat = [
     {
       textualMonth: "jan",
-      Expense: 0,
+      Net: 0,
+      Inverted: 0,
       Income: 0,
     },
     {
       textualMonth: "feb",
-      Expense: 0,
+      Net: 0,
+      Inverted: 0,
       Income: 0,
     },
     {
       textualMonth: "mar",
-      Expense: 0,
+      Net: 0,
+      Inverted: 0,
       Income: 0,
     },
     {
       textualMonth: "apr",
-      Expense: 0,
+      Net: 0,
+      Inverted: 0,
       Income: 0,
     },
     {
       textualMonth: "may",
-      Expense: 0,
+      Net: 0,
+      Inverted: 0,
       Income: 0,
     },
     {
       textualMonth: "jun",
-      Expense: 0,
+      Net: 0,
+      Inverted: 0,
       Income: 0,
     },
     {
       textualMonth: "jul",
-      Expense: 0,
+      Net: 0,
+      Inverted: 0,
       Income: 0,
     },
     {
       textualMonth: "aug",
-      Expense: 0,
+      Net: 0,
+      Inverted: 0,
       Income: 0,
     },
     {
       textualMonth: "sep",
-      Expense: 0,
+      Net: 0,
+      Inverted: 0,
       Income: 0,
     },
     {
       textualMonth: "oct",
-      Expense: 0,
+      Net: 0,
+      Inverted: 0,
       Income: 0,
     },
     {
       textualMonth: "nov",
-      Expense: 0,
+      Net: 0,
+      Inverted: 0,
       Income: 0,
     },
     {
       textualMonth: "dec",
-      Expense: 0,
+      Net: 0,
+      Inverted: 0,
       Income: 0,
     },
   ];
@@ -151,11 +163,9 @@ export const nameMonthOnList = ({ list }: Props) => {
   const listFormatted = listFormat.filter((months: any) => {
     listWithMonths.map((itemList: any) => {
       if (months.textualMonth === itemList.textualMonth) {
-        if (itemList.category == "Expense") {
-          months.Expense += parseFloat(itemList.amount);
-        } else {
-          months.Income += parseFloat(itemList.amount);
-        }
+        months.Income += parseFloat(itemList.revenue);
+        months.Inverted += parseFloat(itemList.spent);
+        months.Net += parseFloat(itemList.profit);
       }
     });
     return months;

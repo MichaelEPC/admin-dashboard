@@ -37,19 +37,7 @@ const FormAddCashFlow = ({
     }
 
     const inputDate = document.getElementById("date") as HTMLInputElement;
-    if (
-      (inputDate && inputDate.value.trim() === "") ||
-      !inputDate.value ||
-      inputDate.value === ""
-    )
-      return false;
-
-    const inputDatea = document.getElementById(
-      "operation-year",
-    ) as HTMLInputElement;
-    if (inputDatea && inputDatea.value.trim() === "") {
-      return false;
-    }
+    if (inputDate.value.length <= 0) return false;
 
     const inputAmount = document.getElementById(
       "operation-amount",
@@ -125,6 +113,7 @@ const FormAddCashFlow = ({
             name="operationDate"
             className="text-gray mt-1 block h-14 w-full rounded-lg border py-2 pl-10 pr-3 shadow-sm"
             max={getMaxDate()}
+            required
           />
           <svg
             className="pointer-events-none absolute left-3 top-[44px] h-6 w-6 text-gray-500"

@@ -19,7 +19,6 @@ const changeMonthExpenseAction = async ({
   try {
     const res = await changeMonthExpenseFromDB({ id, name, amount, date });
     revalidatePath("/operations");
-    return res;
   } catch (error) {
     console.log(error);
   }

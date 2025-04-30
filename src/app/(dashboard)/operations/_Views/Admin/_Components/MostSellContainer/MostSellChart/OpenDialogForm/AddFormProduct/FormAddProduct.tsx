@@ -1,15 +1,16 @@
 import { useFormState } from "react-dom";
 import ButtonSubmit from "app/app/_components/ButtonSubmit";
-import { addNewMonthExpensesAction } from "../../../../utils/AddNewMontlyExpense";
+import { addProductAction } from "../../../../../utils/AddProduct";
 
-const FormAddMonthExpenses = ({
-  setIsOpen,
-}: {
+interface props {
+  list: [];
   setIsOpen: (bol: boolean) => void;
-}) => {
+}
+
+const FormAddProduct = ({ setIsOpen, list }: props) => {
   const [formState, action] = useFormState<{ message: string | null }>(
     // @ts-expect-error
-    addNewMonthExpensesAction,
+    addProductAction,
     { message: null },
   );
 
@@ -25,26 +26,32 @@ const FormAddMonthExpenses = ({
   };
 
   const validateForm = () => {
-    const inputTask = document.getElementById(
+    const inputName = document.getElementById(
       "operation-name",
     ) as HTMLInputElement;
     if (
-      (inputTask && inputTask.value.trim() === "") ||
-      inputTask.value.length > 22 ||
-      inputTask.value.length < 10
+      (inputName && inputName.value.trim() === "") ||
+      inputName.value.length > 80 ||
+      inputName.value.length < 1
     ) {
       return false;
     }
 
-    const inputDate = document.getElementById("date") as HTMLInputElement;
-    if (inputDate.value.length <= 0) return false;
-
-    const inputAmount = document.getElementById(
-      "operation-amount",
+    const inputCategory = document.getElementById(
+      "operation-category",
     ) as HTMLInputElement;
-    if (inputAmount && inputAmount.value.trim() === "") {
+    if (
+      (inputCategory && inputCategory.value.trim() === "") ||
+      inputCategory.value.length > 80 ||
+      inputCategory.value.length < 1
+    ) {
       return false;
     }
+
+    const inputDate = document.getElementById(
+      "operation-date",
+    ) as HTMLInputElement;
+    if (inputDate.value.length <= 0) return false;
 
     return true;
   };
@@ -52,31 +59,35 @@ const FormAddMonthExpenses = ({
   return (
     <>
       <form action={action} className="mb-2">
-        <label htmlFor="operation-name" className="font-semibold text-black">
-          Name of expense
-        </label>
-        <input
-          className="mt-2 h-auto w-full rounded-lg"
-          id="operation-name"
-          name="operationName"
-          type="text"
-          minLength={10}
-          maxLength={22}
-          required
-        />
-
-        <div className="mt-2">
-          <label
-            htmlFor="operation-amount"
-            className="mt-2 font-semibold text-black"
-          >
-            Amount
+        <div>
+          <label htmlFor="operationName" className="font-semibold text-black">
+            Name
           </label>
           <input
             className="mt-2 h-auto w-full rounded-lg"
-            id="operation-amount"
-            name="operationAmount"
-            type="number"
+            id="operation-name"
+            name="operationName"
+            type="text"
+            minLength={1}
+            maxLength={80}
+            required
+          />
+        </div>
+
+        <div>
+          <label
+            htmlFor="OperationCategory"
+            className="font-semibold text-black"
+          >
+            Category
+          </label>
+          <input
+            className="mt-2 h-auto w-full rounded-lg"
+            id="operation-category"
+            name="OperationCategory"
+            type="text"
+            minLength={1}
+            maxLength={80}
             required
           />
         </div>
@@ -87,7 +98,7 @@ const FormAddMonthExpenses = ({
           </label>
           <input
             type="date"
-            id="date"
+            id="operation-date"
             name="operationDate"
             className="text-gray mt-1 block h-14 w-full rounded-lg border py-2 pl-10 pr-3 shadow-sm"
             max={getMaxDate()}
@@ -125,4 +136,4 @@ const FormAddMonthExpenses = ({
   );
 };
 
-export default FormAddMonthExpenses;
+export default FormAddProduct;

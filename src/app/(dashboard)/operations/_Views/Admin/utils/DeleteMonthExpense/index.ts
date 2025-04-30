@@ -9,7 +9,6 @@ const deleteMonthExpenseAction = async (id: string) => {
 
     const res = await deleteMonthExpenseFromDB(id);
     revalidatePath("/operations");
-    return res;
   } catch (error) {
     console.log(error);
   }

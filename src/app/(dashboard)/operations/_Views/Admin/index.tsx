@@ -1,9 +1,7 @@
-import DonutOperationsContainer from "./_Components/DonutContainer";
-import { OpenDialogAddOperation } from "./_Components/OpenDialogForm/OpenDialogAddTask";
-import OperationItemsContainer from "./_Components/OperationsItemsContainer";
 import EarningsChartContainer from "./_Components/EarningsContainer";
 import MonthExpensesChartContainer from "./_Components/MonthExpenses";
-import { ComboChartOperation } from "./_Components/SellsContainer/SellsChart/Areachart";
+import IncomeChartContainer from "./_Components/IncomeContainer";
+import MostSellsChartContainer from "./_Components/MostSellContainer";
 
 const Admin = () => {
   return (
@@ -14,13 +12,14 @@ const Admin = () => {
 
       <div className="flex h-auto w-full flex-col items-center py-4">
         <div className="flex h-auto w-full flex-col items-center xl:flex-row xl:px-10">
-          <EarningsChartContainer />
+          <IncomeChartContainer />
+          <MostSellsChartContainer />
         </div>
 
         <div className="mt-4 h-auto w-full px-5 xl:px-10">
           <div className="h-auto w-full">
             <MonthExpensesChartContainer />
-            <ComboChartOperation list={[]} />
+            <EarningsChartContainer />
           </div>
         </div>
       </div>

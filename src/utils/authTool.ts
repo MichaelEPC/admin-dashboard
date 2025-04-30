@@ -88,7 +88,7 @@ export const signup = async ({
         name: name,
         cellphone: cellphone,
         rol: rol,
-        company: JSON.stringify(company),
+        company: "none",
       })
       .returning({
         id: usersTable.id,
@@ -101,6 +101,12 @@ export const signup = async ({
       .set({
         cashflow: JSON.stringify([]),
         monthlyExpenses: JSON.stringify([]),
+        incomes: JSON.stringify([]),
+        mostProductSold: JSON.stringify({
+          products: [],
+          list: [],
+        }),
+        request: JSON.stringify([]),
         employees: JSON.stringify([
           {
             id: rows[0].id,

@@ -1,15 +1,16 @@
 import { useFormState } from "react-dom";
 import ButtonSubmit from "app/app/_components/ButtonSubmit";
-import { addNewMonthExpensesAction } from "../../../../utils/AddNewMontlyExpense";
+import { addNewCashFlowAction } from "../../../../utils/AddNewCashFlow";
+import { addIncomeAction } from "../../../../utils/AddNewIncome";
 
-const FormAddMonthExpenses = ({
+const FormAddIncome = ({
   setIsOpen,
 }: {
   setIsOpen: (bol: boolean) => void;
 }) => {
   const [formState, action] = useFormState<{ message: string | null }>(
     // @ts-expect-error
-    addNewMonthExpensesAction,
+    addIncomeAction,
     { message: null },
   );
 
@@ -30,7 +31,7 @@ const FormAddMonthExpenses = ({
     ) as HTMLInputElement;
     if (
       (inputTask && inputTask.value.trim() === "") ||
-      inputTask.value.length > 22 ||
+      inputTask.value.length > 32 ||
       inputTask.value.length < 10
     ) {
       return false;
@@ -39,10 +40,17 @@ const FormAddMonthExpenses = ({
     const inputDate = document.getElementById("date") as HTMLInputElement;
     if (inputDate.value.length <= 0) return false;
 
-    const inputAmount = document.getElementById(
-      "operation-amount",
+    const inputRevenue = document.getElementById(
+      "operation-spent",
     ) as HTMLInputElement;
-    if (inputAmount && inputAmount.value.trim() === "") {
+    if (inputRevenue && inputRevenue.value.trim() === "") {
+      return false;
+    }
+
+    const inputInvested = document.getElementById(
+      "operation-operationRevenue",
+    ) as HTMLInputElement;
+    if (inputInvested && inputInvested.value.trim() === "") {
       return false;
     }
 
@@ -53,7 +61,7 @@ const FormAddMonthExpenses = ({
     <>
       <form action={action} className="mb-2">
         <label htmlFor="operation-name" className="font-semibold text-black">
-          Name of expense
+          Income name:
         </label>
         <input
           className="mt-2 h-auto w-full rounded-lg"
@@ -61,21 +69,37 @@ const FormAddMonthExpenses = ({
           name="operationName"
           type="text"
           minLength={10}
-          maxLength={22}
+          maxLength={32}
           required
         />
 
         <div className="mt-2">
           <label
-            htmlFor="operation-amount"
+            htmlFor="operation-revenue"
             className="mt-2 font-semibold text-black"
           >
-            Amount
+            Revenue amount:
           </label>
           <input
             className="mt-2 h-auto w-full rounded-lg"
-            id="operation-amount"
-            name="operationAmount"
+            id="operation-revenue"
+            name="operationRevenue"
+            type="number"
+            required
+          />
+        </div>
+
+        <div className="mt-2">
+          <label
+            htmlFor="operation-spent"
+            className="mt-2 font-semibold text-black"
+          >
+            Inverted amount:
+          </label>
+          <input
+            className="mt-2 h-auto w-full rounded-lg"
+            id="operation-spent"
+            name="operationSpent"
             type="number"
             required
           />
@@ -125,4 +149,4 @@ const FormAddMonthExpenses = ({
   );
 };
 
-export default FormAddMonthExpenses;
+export default FormAddIncome;
