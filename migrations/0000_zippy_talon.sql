@@ -6,6 +6,8 @@ CREATE TABLE `company` (
 	`request` text,
 	`cashflow` text,
 	`monthlyExpenses` text,
+	`incomes` text,
+	`mostProductsSold` text,
 	`taskList` text,
 	`operations` text,
 	`feedBack` text,

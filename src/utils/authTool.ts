@@ -3,8 +3,9 @@ import "server-only";
 // @ts-expect-error
 import jwt from "jsonwebtoken";
 import { db } from "../db/index";
-import { usersTable, companyTable } from "app/db/schema";
+import { companyTable, usersTable } from "app/db/schema";
 import { eq } from "drizzle-orm";
+
 // @ts-expect-error
 import bcrypt from "bcrypt";
 
@@ -75,113 +76,71 @@ export const signup = async ({
   companyName?: string | undefined | null;
   companyCategory?: string | undefined | null;
 }) => {
-  const hashedPW = await hashPW(password);
-  let rows;
-  if (companyName && companyCategory) {
-    // If its a owner that create a new company
-    const company = await createCompany({ companyName, companyCategory });
-    rows = await db
-      .insert(usersTable)
-      .values({
-        email,
-        password: hashedPW,
-        name: name,
-        cellphone: cellphone,
-        rol: rol,
-        company: "none",
-      })
-      .returning({
-        id: usersTable.id,
-        email: usersTable.email,
-        name: usersTable.name,
-        company: usersTable.company,
-      });
-    await db
-      .update(companyTable)
-      .set({
-        cashflow: JSON.stringify([]),
-        monthlyExpenses: JSON.stringify([]),
-        incomes: JSON.stringify([]),
-        mostProductSold: JSON.stringify({
-          products: [],
-          list: [],
-        }),
-        request: JSON.stringify([]),
-        employees: JSON.stringify([
-          {
-            id: rows[0].id,
-            name: name,
-            email: email,
-            cellphone: cellphone,
-            rol: rol,
-            job: "owner",
-          },
-        ]),
-        taskList: JSON.stringify({
-          goal: 0,
-          taskCompleted: 0,
-          completedTask: [],
-          pendingTask: [],
-          totalTask: [],
-        }),
-        feedBack: JSON.stringify({
-          letters: [],
-          rating: [
+  try {
+    const hashedPW = await hashPW(password);
+    let rows;
+    if (companyName && companyCategory) {
+      // If its a owner that create a new company
+      console.log(`Prueba: -------------`);
+      const company = await createCompany({ companyName, companyCategory });
+
+      rows = await db
+        .insert(usersTable)
+        .values({
+          email,
+          password: hashedPW,
+          name: name,
+          cellphone: cellphone,
+          rol: rol,
+          company: JSON.stringify(company),
+        })
+        .returning({
+          id: usersTable.id,
+          email: usersTable.email,
+          name: usersTable.name,
+          company: usersTable.company,
+        });
+
+      await db
+        .update(companyTable)
+        .set({
+          employees: JSON.stringify([
             {
-              name: "Super Good",
-              color: "blue",
-              sales: 0,
+              id: rows[0].id,
+              name: name,
+              email: email,
+              cellphone: cellphone,
+              rol: rol,
+              job: "owner",
             },
-            {
-              name: "Good",
-              color: "cyan",
-              sales: 0,
-            },
-            {
-              name: "Medium",
-              color: "green",
-              sales: 0,
-            },
-            {
-              name: "Not well",
-              color: "yellow",
-              sales: 0,
-            },
-            {
-              name: "Bad",
-              color: "red",
-              sales: 0,
-            },
-          ],
-          voted: [],
-        }),
-        operations: JSON.stringify({
-          list: [],
-        }),
-      })
-      .where(eq(companyTable.id, company.id));
-  } else {
-    // If its a employee
-    rows = await db
-      .insert(usersTable)
-      .values({
-        email,
-        password: hashedPW,
-        name: name,
-        cellphone: cellphone,
-        rol: rol,
-        company: "none",
-      })
-      .returning({
-        id: usersTable.id,
-        email: usersTable.email,
-        name: usersTable.name,
-        company: usersTable.company,
-      });
+          ]),
+        })
+        .where(eq(companyTable.id, company.id));
+    } else {
+      // If its a employee
+      rows = await db
+        .insert(usersTable)
+        .values({
+          email,
+          password: hashedPW,
+          name: name,
+          cellphone: cellphone,
+          rol: rol,
+          company: "none",
+        })
+        .returning({
+          id: usersTable.id,
+          email: usersTable.email,
+          name: usersTable.name,
+          company: usersTable.company,
+        });
+    }
+    const user = rows[0];
+    const token = createTokenForUser(user.id);
+    return { user, token };
+  } catch (error) {
+    console.log(error);
   }
-  const user = rows[0];
-  const token = createTokenForUser(user.id);
-  return { user, token };
 };
 
 export const createCompany = async ({
@@ -191,11 +150,61 @@ export const createCompany = async ({
   companyName: string;
   companyCategory: string;
 }) => {
-  const row = await db
+  let row;
+  row = await db
     .insert(companyTable)
     .values({
       name: companyName,
       category: companyCategory,
+      cashflow: JSON.stringify([]),
+      monthlyExpenses: JSON.stringify([]),
+      incomes: JSON.stringify([]),
+      mostProductSold: JSON.stringify({
+        products: [],
+        list: [],
+      }),
+      request: JSON.stringify([]),
+      taskList: JSON.stringify({
+        goal: 0,
+        taskCompleted: 0,
+        completedTask: [],
+        pendingTask: [],
+        totalTask: [],
+      }),
+      feedBack: JSON.stringify({
+        letters: [],
+        rating: [
+          {
+            name: "Super Good",
+            color: "blue",
+            sales: 0,
+          },
+          {
+            name: "Good",
+            color: "cyan",
+            sales: 0,
+          },
+          {
+            name: "Medium",
+            color: "green",
+            sales: 0,
+          },
+          {
+            name: "Not well",
+            color: "yellow",
+            sales: 0,
+          },
+          {
+            name: "Bad",
+            color: "red",
+            sales: 0,
+          },
+        ],
+        voted: [],
+      }),
+      operations: JSON.stringify({
+        list: [],
+      }),
     })
     .returning({ id: companyTable.id, name: companyTable.name });
   const company = row[0];

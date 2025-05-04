@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "cc7946fc-6efa-4bc4-833a-8fe60fa0b8ae",
+  "id": "ce3f51ab-d88d-4fe3-adef-429aa6c1d870",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "company": {
@@ -51,6 +51,20 @@
         },
         "monthlyExpenses": {
           "name": "monthlyExpenses",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "incomes": {
+          "name": "incomes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "mostProductsSold": {
+          "name": "mostProductsSold",
           "type": "text",
           "primaryKey": false,
           "notNull": false,
