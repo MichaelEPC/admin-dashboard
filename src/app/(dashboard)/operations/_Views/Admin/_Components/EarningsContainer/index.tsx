@@ -11,7 +11,7 @@ const EarningsChartContainer = async () => {
   });
 
   return (
-    <div>
+    <div className="mt-4 x2:mt-0">
       <EarningsChart list={list} years={years} />
     </div>
   );

@@ -11,15 +11,15 @@ const Admin = () => {
       </div>
 
       <div className="flex h-auto w-full flex-col items-center py-4">
-        <div className="flex h-auto w-full flex-col items-center xl:flex-row xl:px-10">
+        <div className="flex h-auto w-full flex-col items-center justify-between xl:w-[1400px] xl:px-4 x2:flex-row">
           <IncomeChartContainer />
-          <MostSellsChartContainer />
+          <EarningsChartContainer />
         </div>
 
-        <div className="mt-4 h-auto w-full px-5 xl:px-10">
-          <div className="h-auto w-full">
+        <div className="mt-4 flex h-auto w-full items-center justify-center xl:px-4">
+          <div className="x3S:flex-row flex h-auto w-full flex-col items-center">
             <MonthExpensesChartContainer />
-            <EarningsChartContainer />
+            <MostSellsChartContainer />
           </div>
         </div>
       </div>

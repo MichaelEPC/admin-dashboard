@@ -11,7 +11,7 @@ const MonthExpensesChartContainer = async () => {
   });
 
   return (
-    <div className="h-auto w-full">
+    <div className="mt-4 x2:mt-0">
       <MonthExpensesChart list={list} years={years} />
     </div>
   );

@@ -83,13 +83,13 @@ const ShowMoreContainer = ({ list, years }: ControlProps) => {
                   //@ts-ignore
                   id={items.id}
                   //@ts-ignore
-                  name={items.name}
+                  name={items.product.name}
                   //@ts-ignore
                   amount={items.amount}
                   //@ts-ignore
                   date={items.date}
                   //@ts-ignore
-                  category={items.category}
+                  category={items.product.category}
                 />
               );
             })

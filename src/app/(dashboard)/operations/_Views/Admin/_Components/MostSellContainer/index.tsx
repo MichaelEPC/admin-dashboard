@@ -11,7 +11,7 @@ const MostSellsChartContainer = async () => {
   });
 
   return (
-    <div>
+    <div className="ml-0 mt-4 x2:ml-12 x2:mt-0">
       <MostSellChart
         list={soldProducts.list}
         products={soldProducts.products}

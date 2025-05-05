@@ -1,5 +1,5 @@
 import ButtonSubmit from "app/app/_components/ButtonSubmit";
-import { changeCashFlowsAction } from "app/app/(dashboard)/operations/_Views/Admin/utils/ChangeCashFlow";
+import { ChangeSoldProductAction } from "app/app/(dashboard)/operations/_Views/Admin/utils/ChangeSoldProdcut";
 
 const FormChangeInformation = ({
   setIsOpen,
@@ -7,14 +7,12 @@ const FormChangeInformation = ({
   name,
   amount,
   date,
-  category,
 }: {
   setIsOpen: (bol: boolean) => void;
   id: string;
   name: string;
   amount: number | string;
   date: string;
-  category: string;
 }) => {
   const getMaxDate = () => {
     const today = new Date();
@@ -30,16 +28,6 @@ const FormChangeInformation = ({
   const validateForm = () => {
     const inputID = document.getElementById("operationID") as HTMLInputElement;
 
-    const inputTask = document.getElementById(
-      "operation-name",
-    ) as HTMLInputElement;
-    if (
-      (inputTask && inputTask.value.trim() === "") ||
-      inputTask.value.length > 32 ||
-      inputTask.value.length < 10
-    )
-      return false;
-
     const inputDate = document.getElementById("date") as HTMLInputElement;
     if (inputDate.value.length <= 0) return false;
 
@@ -48,17 +36,10 @@ const FormChangeInformation = ({
     ) as HTMLInputElement;
     if (inputAmount && inputAmount.value.trim() === "") return false;
 
-    const inputCategory = document.getElementById(
-      "operationCategory",
-    ) as HTMLInputElement;
-    if (inputCategory && inputCategory.value === null) return false;
-
-    changeCashFlowsAction({
+    ChangeSoldProductAction({
       id: inputID.value,
-      name: inputTask.value,
       date: inputDate.value,
       amount: inputAmount.value,
-      category: inputCategory.value,
     });
     return true;
   };
@@ -82,38 +63,15 @@ const FormChangeInformation = ({
             Expense or income name
           </label>
           <input
-            className="mt-2 h-auto w-full rounded-lg"
+            className="mt-2 h-auto w-full rounded-lg bg-gray-200"
             id="operation-name"
             name="operationName"
             type="text"
             defaultValue={name}
             minLength={10}
             maxLength={32}
-            required
+            disabled
           />
-        </div>
-
-        <div className="mt-2">
-          <label
-            htmlFor="operationCategory"
-            className="mt-2 font-semibold text-black"
-          >
-            Cash flow category
-          </label>
-          <select
-            className="mt-2 h-auto w-full rounded-lg"
-            id="operationCategory"
-            name="operationCategory"
-            defaultValue={category}
-            required
-          >
-            <option key={1} value="Income">
-              Income
-            </option>
-            <option key={2} value="Expense">
-              Expense
-            </option>
-          </select>
         </div>
 
         <div className="mt-2">

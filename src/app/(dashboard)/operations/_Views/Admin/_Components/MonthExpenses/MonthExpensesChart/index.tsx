@@ -23,7 +23,7 @@ const EarningsChart = ({ list, years }: props) => {
   }, [year, list]);
 
   return (
-    <div className="min-h-[360px] w-[370px] rounded-lg border-2 border-ligh-gray bg-white p-4 shadow-md graphicmb:w-[425px] graphicsm:w-[525px] graphicmd:w-[650px]">
+    <div className="min-h-[360px] w-[370px] rounded-lg border-2 border-ligh-gray bg-white p-4 shadow-md graphicmb:w-[425px] graphicsm:w-[525px] graphicmd:w-[950px]">
       <div className="flex items-center justify-between">
         <div className="relative flex h-auto w-32 skew-x-3 items-center rounded-md bg-gradient-to-r from-principal-color to-second-color px-6 py-2 shadow-lg graphicmb:w-52 graphicsm:w-72">
           <span className="font-bold uppercase tracking-wide text-white">

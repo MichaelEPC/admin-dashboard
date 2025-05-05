@@ -25,8 +25,6 @@ export const DonutChartMostSoldOperation: React.FC<OperationItemsProps> = ({
   useEffect(() => {
     // @ts-ignore
     setData(nameMonthOnListProductSold({ list, products }));
-    // @ts-ignore
-    console.log(data);
   }, [list, products]);
 
   return (

@@ -13,8 +13,8 @@ interface Props {
 
 const HistoryItemsEarnings = ({ cashflow }: Props) => {
   return (
-    <article className="relative mb-2 flex h-10 w-full skew-x-1 items-center justify-center bg-gradient-to-r from-principal-color to-second-color px-20 py-1 graphicmd:justify-between">
-      <div className="mr-2 h-auto w-6 rounded-full bg-white graphicmd:mr-0">
+    <article className="graphicmd:justify-between relative mb-2 flex h-10 w-full skew-x-1 items-center justify-center bg-gradient-to-r from-principal-color to-second-color px-20 py-1">
+      <div className="graphicmd:mr-0 mr-2 h-auto w-6 rounded-full bg-white">
         <svg
           className={`h-6 w-6 ${cashflow.category === "Income" ? "fill-green-500" : "fill-red-500"} `}
           xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +30,7 @@ const HistoryItemsEarnings = ({ cashflow }: Props) => {
         </svg>
       </div>
       <p className="font-semibold text-white">{cashflow.name}</p>
-      <p className="hidden font-semibold text-white graphicmd:block">
+      <p className="graphicmd:block hidden font-semibold text-white">
         {cashflow.date}
       </p>
     </article>
