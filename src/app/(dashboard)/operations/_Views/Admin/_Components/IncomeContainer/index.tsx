@@ -11,7 +11,7 @@ const IncomeChartContainer = async () => {
   });
 
   return (
-    <div>
+    <div className="flex h-auto w-full items-center justify-center">
       <IncomeChart list={list} years={years} />
     </div>
   );

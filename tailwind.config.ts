@@ -37,6 +37,9 @@ const config: Config = {
       xl: "1280px",
       // => @media (min-width: 1280px) { ... }
 
+      prex1: "1400px",
+      // => @media (min-width: 1280px) { ... }
+
       x2: "1500px",
       // => @media (min-width: 1500px) { ... }
 

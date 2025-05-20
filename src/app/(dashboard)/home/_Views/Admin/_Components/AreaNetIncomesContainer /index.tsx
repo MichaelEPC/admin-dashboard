@@ -20,7 +20,7 @@ export const AreaIncomesNetContainer = async () => {
         formatLeft={"$"}
         formatRight={""}
         colors={["green"]}
-        title={`Gain porcentage: ${netPorcent.toFixed(1)}%`}
+        title={`Raise porcentage: ${netPorcent.toFixed(1)}%`}
         date={`${date.month}-${date.years}`}
       />
     </div>
