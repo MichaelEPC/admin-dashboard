@@ -13,6 +13,8 @@ import { CardIncomesContainer } from "./_Components/CardIncomesContainer";
 import { CardProductsContainer } from "./_Components/CardNumberProductsContainer";
 import { MonthlyExpensesContainer } from "./_Components/MonthlyExpensesContainer";
 import { SellsProductsContainer } from "./_Components/SoldNumberProductContainer";
+import { AreaIncomesNetContainer } from "./_Components/AreaNetIncomesContainer ";
+import { AreaAllIncomesNetContainer } from "./_Components/AreaAllNetIncomesContainer  ";
 
 const Admin = () => {
   return (
@@ -60,6 +62,35 @@ const Admin = () => {
               <div className="mt-2 flex h-auto w-full items-center justify-center rounded-lg border-2 border-principal-color bg-white p-2 py-4 shadow-md">
                 {/* <CalloutCard /> */}
                 <MonthlyExpensesContainer />
+              </div>
+            </div>
+          </div>
+
+          {/* Second Layer */}
+
+          <div className="flex h-auto w-full flex-col justify-center gap-2 p-2 md:flex-row">
+            <div className="flex h-auto w-full flex-col items-center justify-center">
+              {/* Title bar graphic */}
+              <div className="relative flex h-auto w-32 skew-x-3 items-center justify-center rounded-md bg-gradient-to-r from-principal-color to-second-color px-2 py-2 shadow-lg graphicmb:w-52 graphicsm:w-72">
+                <span className="font-bold uppercase tracking-wide text-white">
+                  Net profit earns
+                </span>
+              </div>
+              <div className="mt-2 flex h-auto w-full items-center justify-center rounded-lg border-2 border-principal-color bg-white p-2 py-4 shadow-md">
+                <AreaIncomesNetContainer />
+              </div>
+            </div>
+
+            <div className="flex h-auto w-full flex-col justify-center md:w-full">
+              {/* Title bar graphic */}
+              <div className="relative flex h-auto w-32 skew-x-3 items-center justify-center rounded-md bg-gradient-to-r from-principal-color to-second-color px-2 py-2 shadow-lg graphicmb:w-52 graphicsm:w-72">
+                <span className="font-bold uppercase tracking-wide text-white">
+                  All net incomes
+                </span>
+              </div>
+              <div className="mt-2 flex h-auto w-full items-center justify-center rounded-lg border-2 border-principal-color bg-white p-2 py-4 shadow-md">
+                {/* <CalloutCard /> */}
+                <AreaAllIncomesNetContainer />
               </div>
             </div>
           </div>
