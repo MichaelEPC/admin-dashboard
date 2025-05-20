@@ -27,9 +27,6 @@ const registerUser = async (prevState: any, formData: FormData) => {
       companyName: formData.get("companyName"),
       companyCategory: formData.get("companyCategory"),
     });
-    // @ts-ignore
-    const { token } = await signup({ ...userData });
-    cookies().set(COOKIE_NAME, token);
   } catch (error) {
     return { message: error };
   }
