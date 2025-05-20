@@ -12,9 +12,8 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <HeaderContainer />
       <Nav />
-        <MainContainer>{children}</MainContainer>
+      <MainContainer>{children}</MainContainer>
     </>
   );
 }

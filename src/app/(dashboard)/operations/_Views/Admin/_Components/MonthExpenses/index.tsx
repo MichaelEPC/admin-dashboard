@@ -11,7 +11,7 @@ const MonthExpensesChartContainer = async () => {
   });
 
   return (
-    <div className="mt-4 x2:mt-0">
+    <div className="mt-4 flex h-auto w-full items-center justify-center x2:mt-0">
       <MonthExpensesChart list={list} years={years} />
     </div>
   );

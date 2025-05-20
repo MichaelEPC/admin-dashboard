@@ -12,24 +12,24 @@ const navItems = [
     svgPath:
       "M12.74 2.32a1 1 0 0 0-1.48 0l-9 10A1 1 0 0 0 3 14h2v7a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-7h2a1 1 0 0 0 1-1 1 1 0 0 0-.26-.68z",
   },
-  {
-    id: 2,
-    name: "Team",
-    svgPath:
-      "M7.5 6.5C7.5 8.981 9.519 11 12 11s4.5-2.019 4.5-4.5S14.481 2 12 2 7.5 4.019 7.5 6.5zM20 21h1v-1c0-3.859-3.141-7-7-7h-4c-3.86 0-7 3.141-7 7v1h17z",
-  },
+  // {
+  //   id: 2,
+  //   name: "Team",
+  //   svgPath:
+  //     "M7.5 6.5C7.5 8.981 9.519 11 12 11s4.5-2.019 4.5-4.5S14.481 2 12 2 7.5 4.019 7.5 6.5zM20 21h1v-1c0-3.859-3.141-7-7-7h-4c-3.86 0-7 3.141-7 7v1h17z",
+  // },
   {
     id: 3,
     name: "Operations",
     svgPath:
       "M20 6h-3V4c0-1.103-.897-2-2-2H9c-1.103 0-2 .897-2 2v2H4c-1.103 0-2 .897-2 2v4h5v-2h2v2h6v-2h2v2h5V8c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 11h-2v-2H9v2H7v-2H2v6c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2v-6h-5v2z",
   },
-  {
-    id: 4,
-    name: "Agenda",
-    svgPath:
-      "M4 6h2v2H4zm0 5h2v2H4zm0 5h2v2H4zm16-8V6H8.023v2H18.8zM8 11h12v2H8zm0 5h12v2H8z",
-  },
+  // {
+  //   id: 4,
+  //   name: "Agenda",
+  //   svgPath:
+  //     "M4 6h2v2H4zm0 5h2v2H4zm0 5h2v2H4zm16-8V6H8.023v2H18.8zM8 11h12v2H8zm0 5h12v2H8z",
+  // },
 ];
 
 const Nav = () => {
@@ -81,7 +81,7 @@ const Nav = () => {
         })}
       </ul>
       <div
-        className="absolute -right-10 top-80 cursor-pointer sm:-right-6"
+        className="absolute -right-10 top-80 cursor-pointer rounded-full bg-white sm:-right-6"
         onClick={() => {
           if (navIsOpen) {
             setNavIsOpen(false);

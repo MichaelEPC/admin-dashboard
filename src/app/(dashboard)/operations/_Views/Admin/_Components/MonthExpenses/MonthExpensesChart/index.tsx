@@ -23,10 +23,10 @@ const EarningsChart = ({ list, years }: props) => {
   }, [year, list]);
 
   return (
-    <div className="prex1:w-[950px] min-h-[360px] w-[1000px] rounded-lg border-2 border-principal-color bg-white p-4 shadow-md">
+    <div className="prex1:w-[1000px] min-h-[360px] w-full rounded-lg border-2 border-principal-color bg-white p-4 shadow-md">
       <div className="flex items-center justify-between">
-        <div className="relative flex h-auto w-32 skew-x-3 items-center rounded-md bg-gradient-to-r from-principal-color to-second-color px-6 py-2 shadow-lg graphicmb:w-52 graphicsm:w-72">
-          <span className="font-bold uppercase tracking-wide text-white">
+        <div className="relative flex h-auto w-32 skew-x-3 items-center rounded-md bg-gradient-to-r from-principal-color to-second-color px-0 py-2 shadow-lg graphicmb:w-52 graphicsm:w-72 xl:px-6">
+          <span className="ml-1 font-bold uppercase tracking-wide text-white">
             Month Expenses
           </span>
           <div className="absolute right-4 flex -skew-x-6 space-x-1">

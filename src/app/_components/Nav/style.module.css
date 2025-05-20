@@ -1,14 +1,14 @@
 .navContainer {
-  min-height: calc(100vh - 64px);
+  min-height: calc(100vh + 14px);
   /* width: 270px; */
   width: 0px;
-  top: 61px;
+  top: 0px;
 }
 
 .navContainerExpanded {
-  min-height: calc(100vh - 64px);
+  min-height: calc(100vh + 14px);
   width: 270px;
-  top: 61px;
+  top: 0px;
 }
 
 @media (min-width: 620px) {
