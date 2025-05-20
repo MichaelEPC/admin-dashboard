@@ -17,7 +17,9 @@ const deleteIncomeFromDB = async (id: string) => {
     const income = await JSON.parse(company.incomes);
     const newList = income
       .map((item: any) => {
-        return item.id != id;
+        if (item.id != id) {
+          return item;
+        }
       })
       .filter((item: any) => item);
 
