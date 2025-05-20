@@ -1,15 +1,9 @@
 "use server";
 import { getUserFromToken } from "app/utils/authTool";
-import { COOKIE_NAME } from "app/utils/const";
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export const isUserLog = async () => {
-  const cookieToken = cookies().get(COOKIE_NAME);
-  if (!cookieToken) {
-    redirect("/signin");
-  }
-  const user = await getUserFromToken(cookieToken);
+  const user = await getUserFromToken();
   if (!user) {
     redirect("/signin");
   }

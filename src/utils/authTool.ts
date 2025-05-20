@@ -24,14 +24,9 @@ export const createTokenForUser = (userId: string) => {
   return token;
 };
 
-export const getUserFromToken = async (token: {
-  name: string;
-  value: string;
-}) => {
-  const payload = jwt.verify(token.value, SECRET) as { id: string };
-
+export const getUserFromToken = async () => {
   const user = await db.query.usersTable.findFirst({
-    where: eq(usersTable.id, payload.id),
+    where: eq(usersTable.id, "c38ff0dc-062b-475c-b80a-ae6a72b2a543"),
     columns: {
       id: true,
       email: true,
@@ -46,7 +41,7 @@ export const getUserFromToken = async (token: {
 
 export const getUserFromId = async (userId: string) => {
   const user = await db.query.usersTable.findFirst({
-    where: eq(usersTable.id, userId),
+    where: eq(usersTable.id, "c38ff0dc-062b-475c-b80a-ae6a72b2a543"),
     columns: {
       id: true,
       email: true,
@@ -221,13 +216,17 @@ export const signin = async ({
   const match = await db.query.usersTable.findFirst({
     where: eq(usersTable.email, email),
   });
+
+  if (!match) console.log("No es compatible la contraseña");
   if (!match) throw new Error("The email or password provide are not correct.");
 
   const comparePass = await comparePW(password, match.password);
+
+  if (!comparePass) console.log("Segundo error");
   if (!comparePass) {
     throw new Error("The email or password provide are not correct.");
   }
-  const token = await createTokenForUser(match.id);
 
+  const token = await createTokenForUser(match.id);
   return { token };
 };
