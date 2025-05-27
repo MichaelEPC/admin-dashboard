@@ -23,6 +23,7 @@ const SignIn = () => {
         <input
           className="mt-2 h-8 w-full rounded-lg border-2 border-principal-color p-2 text-text-color outline-none"
           placeholder="youremail@hotmail.com"
+          value={"Hola@gmail.com"}
           name="email"
           type="text"
           required
@@ -34,6 +35,7 @@ const SignIn = () => {
         <input
           className="mt-2 h-8 w-full rounded-lg border-2 border-principal-color p-2 text-text-color outline-none"
           placeholder="*******"
+          value={"Hola@gmail.com"}
           name="password"
           type="password"
           required
