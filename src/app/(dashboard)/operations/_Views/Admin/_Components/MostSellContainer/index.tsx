@@ -10,6 +10,11 @@ const MostSellsChartContainer = async () => {
     list: soldProducts.list,
   });
 
+  if (!soldProducts || !years) {
+    // Manejar el error o retornar fallback
+    return <div>Error cargando datos</div>;
+  }
+
   return (
     <div className="ml-0 mt-4 x2:ml-12 x2:mt-0">
       <MostSellChart

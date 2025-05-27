@@ -3,7 +3,11 @@ import OperationItems from "./OperationItems";
 
 const OperationItemsContainer = async () => {
   const operationList = await getAllOperationsAction();
-  console.log(operationList);
+
+  if (!operationList) {
+    // Manejar el error o retornar fallback
+    return <div>Error cargando datos</div>;
+  }
 
   return (
     <div className="mt-2 flex h-auto w-72 flex-col rounded-lg border-2 border-ligh-gray bg-white p-2 shadow-md xl:w-full">
