@@ -38,7 +38,7 @@ Whether you're a freelancer, a startup, or a growing company, this dashboard giv
 ### 📅 Monthly Expenses Overview
 
 - Bar charts displaying monthly expenses
-- Easily spot high-cost periods
+- Easily spot high-cost periods.
 
 ### 🧩 Modern Stack
 
