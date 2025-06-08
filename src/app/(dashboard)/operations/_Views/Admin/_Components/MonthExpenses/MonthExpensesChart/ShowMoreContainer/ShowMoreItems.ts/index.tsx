@@ -18,13 +18,11 @@ const ShowMoreItems = ({ id, name, amount, date }: ControlProps) => {
         <div className="flex items-center">
           <div className="h-auto w-4 rounded-full bg-white">
             <svg
-              className={`mr-1 h-6 w-6 fill-black`}
+              className={`h-6 w-6 fill-green-500`}
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
-              <path
-                d={`M19.071 4.929c-3.899-3.898-10.243-3.898-14.143 0-3.898 3.899-3.898 10.244 0 14.143 3.899 3.898 10.243 3.898 14.143 0 3.899-3.9 3.899-10.244 0-14.143zm-3.536 10.607-2.828-2.829-3.535 3.536-1.414-1.414 3.535-3.536-2.828-2.829h7.07v7.072z`}
-              ></path>
+              <path d="M12 22c5.514 0 10-4.486 10-10S17.514 2 12 2 2 6.486 2 12s4.486 10 10 10zM10 7l6 5-6 5V7z"></path>
             </svg>
           </div>
 

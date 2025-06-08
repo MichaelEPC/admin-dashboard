@@ -7,12 +7,12 @@ const Admin = () => {
   return (
     <section className="flex h-auto w-full justify-center">
       <div className="flex h-auto w-full flex-col items-center py-4">
-        <div className="prex1:flex-row flex h-auto w-full flex-col items-center justify-between x2:w-[1400px] x2:px-4">
+        <div className="flex h-auto w-full flex-col items-center justify-between prex1:flex-row x2:w-[1400px] x2:px-4">
           <IncomeChartContainer />
           <EarningsChartContainer />
         </div>
 
-        <div className="mt-4 flex h-auto w-full items-center justify-center xl:px-4">
+        <div className="mt-4 flex h-auto w-full items-center justify-center xl:px-4 x3S:px-24">
           <div className="flex h-auto w-full flex-col items-center x3S:flex-row">
             <MonthExpensesChartContainer />
             <MostSellsChartContainer />
