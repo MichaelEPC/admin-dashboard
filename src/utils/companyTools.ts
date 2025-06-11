@@ -35,6 +35,8 @@ export const getCompanyFromUser = async () => {
       monthlyExpenses: true,
       incomes: true,
       mostProductSold: true,
+      bills: true,
+      clients: true,
     },
   });
   if (!company) {
@@ -68,6 +70,8 @@ export const getCompanyById = async (companyId: string) => {
       monthlyExpenses: true,
       incomes: true,
       mostProductSold: true,
+      bills: true,
+      clients: true,
     },
   });
   if (!company) {

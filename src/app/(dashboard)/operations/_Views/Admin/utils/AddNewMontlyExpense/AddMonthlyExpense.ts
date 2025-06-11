@@ -21,7 +21,7 @@ export const sendMonthExpenseToDB = async (
     // @ts-expect-error
     const monthExpenses = await JSON.parse(company.monthlyExpenses);
     const uniqueId = crypto.randomUUID();
-    monthExpenses.push({
+    monthExpenses.unshift({
       id: uniqueId,
       name: capitalizeFirstLetter(name),
       amount: parseFloat(amount),

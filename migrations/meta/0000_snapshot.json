@@ -1,191 +1,205 @@
 {
+  "id": "00000000-0000-0000-0000-000000000000",
+  "prevId": "",
   "version": "6",
   "dialect": "sqlite",
-  "id": "ce3f51ab-d88d-4fe3-adef-429aa6c1d870",
-  "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "company": {
       "name": "company",
       "columns": {
         "id": {
+          "autoincrement": false,
           "name": "id",
           "type": "text",
           "primaryKey": true,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "name": {
+          "autoincrement": false,
           "name": "name",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "category": {
+          "autoincrement": false,
           "name": "category",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "employees": {
+          "autoincrement": false,
           "name": "employees",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
         "request": {
+          "autoincrement": false,
           "name": "request",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "cashflow": {
-          "name": "cashflow",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "monthlyExpenses": {
-          "name": "monthlyExpenses",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "incomes": {
-          "name": "incomes",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "mostProductsSold": {
-          "name": "mostProductsSold",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
         "taskList": {
+          "autoincrement": false,
           "name": "taskList",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
         "operations": {
+          "autoincrement": false,
           "name": "operations",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
         "feedBack": {
+          "autoincrement": false,
           "name": "feedBack",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         },
         "created_at": {
+          "default": "(CURRENT_TIMESTAMP)",
+          "autoincrement": false,
           "name": "created_at",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": true
+        },
+        "cashflow": {
           "autoincrement": false,
-          "default": "(CURRENT_TIMESTAMP)"
+          "name": "cashflow",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "monthlyExpenses": {
+          "autoincrement": false,
+          "name": "monthlyExpenses",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "incomes": {
+          "autoincrement": false,
+          "name": "incomes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mostProductsSold": {
+          "autoincrement": false,
+          "name": "mostProductsSold",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "bills": {
+          "autoincrement": false,
+          "name": "bills",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "clients": {
+          "autoincrement": false,
+          "name": "clients",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         }
       },
+      "compositePrimaryKeys": {},
       "indexes": {},
       "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      "uniqueConstraints": {},
+      "checkConstraints": {}
     },
     "users": {
       "name": "users",
       "columns": {
         "id": {
+          "autoincrement": false,
           "name": "id",
           "type": "text",
           "primaryKey": true,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "name": {
+          "autoincrement": false,
           "name": "name",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "cellphone": {
+          "autoincrement": false,
           "name": "cellphone",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "email": {
+          "autoincrement": false,
           "name": "email",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "password": {
+          "autoincrement": false,
           "name": "password",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "rol": {
+          "autoincrement": false,
           "name": "rol",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "company": {
+          "autoincrement": false,
           "name": "company",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": false
         }
       },
+      "compositePrimaryKeys": {},
       "indexes": {
-        "users_cellphone_unique": {
-          "name": "users_cellphone_unique",
-          "columns": [
-            "cellphone"
-          ],
-          "isUnique": true
-        },
         "users_email_unique": {
           "name": "users_email_unique",
           "columns": [
             "email"
           ],
           "isUnique": true
+        },
+        "users_cellphone_unique": {
+          "name": "users_cellphone_unique",
+          "columns": [
+            "cellphone"
+          ],
+          "isUnique": true
         }
       },
       "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      "uniqueConstraints": {},
+      "checkConstraints": {}
     }
   },
+  "views": {},
   "enums": {},
   "_meta": {
     "schemas": {},
     "tables": {},
     "columns": {}
-  },
-  "internal": {
-    "indexes": {}
   }
 }

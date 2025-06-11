@@ -19,7 +19,7 @@ export const sendIncomeToDB = async (
     // @ts-expect-error
     const incomes = await JSON.parse(company.incomes);
     const uniqueId = crypto.randomUUID();
-    incomes.push({
+    incomes.unshift({
       id: uniqueId,
       name: name,
       revenue: parseFloat(revenue),

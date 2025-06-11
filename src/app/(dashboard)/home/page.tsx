@@ -1,6 +1,5 @@
 import { isUserLog } from "app/actions/Auth/CheckUserSingIn";
 import Admin from "./_Views/Admin";
-import EmployeeView from "./_Views/EmployeeView";
 
 const Home = async () => {
   const user = await isUserLog();
@@ -9,7 +8,7 @@ const Home = async () => {
     isEmployee = false;
   }
 
-  return <>{isEmployee ? <EmployeeView /> : <Admin />}</>;
+  return <>{!isEmployee ? <Admin /> : ""}</>;
 };
 
 export default Home;

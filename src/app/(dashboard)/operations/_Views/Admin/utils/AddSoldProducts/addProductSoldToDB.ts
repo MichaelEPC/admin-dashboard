@@ -18,7 +18,7 @@ export const sendProductSoldToDB = async (
     // @ts-expect-error
     const productSold = await JSON.parse(company.mostProductSold);
     const uniqueId = crypto.randomUUID();
-    productSold.list.push({
+    productSold.list.unshift({
       id: uniqueId,
       product: JSON.parse(product),
       amount: parseFloat(amount),

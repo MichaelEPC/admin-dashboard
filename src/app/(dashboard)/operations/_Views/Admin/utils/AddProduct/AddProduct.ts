@@ -22,7 +22,7 @@ export const sendProductToDB = async (
     const mostProductSold = await JSON.parse(company.mostProductSold);
     const uniqueId = crypto.randomUUID();
 
-    mostProductSold.products.push({
+    mostProductSold.products.unshift({
       id: uniqueId,
       name: capitalizeFirstLetter(name).trim(),
       category: capitalizeFirstLetter(category).trim(),

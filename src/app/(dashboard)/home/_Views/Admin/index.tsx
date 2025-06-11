@@ -8,6 +8,8 @@ import { MonthlyExpensesContainer } from "./_Components/MonthlyExpensesContainer
 import { SellsProductsContainer } from "./_Components/SoldNumberProductContainer";
 import { AreaIncomesNetContainer } from "./_Components/AreaNetIncomesContainer ";
 import { AreaAllIncomesNetContainer } from "./_Components/AreaAllNetIncomesContainer  ";
+import { ShowBillsContainer } from "./_Components/BillsTableContainer";
+import { ClientContainer } from "./_Components/ClientsShowContainer";
 
 const Admin = () => {
   return (
@@ -97,6 +99,33 @@ const Admin = () => {
           </div>
 
           {/* Third Layer */}
+
+          <div className="flex h-auto w-full flex-col items-center justify-center gap-2 p-0 xl:flex-row xl:p-2">
+            <div className="flex h-auto w-full flex-col items-center justify-center">
+              {/* Title bar graphic */}
+              <div className="relative flex h-auto w-32 skew-x-3 items-center justify-center rounded-md bg-gradient-to-r from-principal-color to-second-color px-2 py-2 shadow-lg graphicmb:w-52 graphicsm:w-72">
+                <span className="font-bold uppercase tracking-wide text-white">
+                  All bills
+                </span>
+              </div>
+              <div className="mt-2 flex h-auto w-full items-center justify-center rounded-lg border-2 border-principal-color bg-white p-0 py-4 shadow-md xl:p-2">
+                <ShowBillsContainer />
+              </div>
+            </div>
+
+            <div className="flex h-auto w-full flex-col items-center md:w-auto">
+              {/* Title bar graphic */}
+              <div className="relative flex h-auto w-32 skew-x-3 items-center justify-center rounded-md bg-gradient-to-r from-principal-color to-second-color px-2 py-2 shadow-lg graphicmb:w-52 graphicsm:w-72">
+                <span className="font-bold uppercase tracking-wide text-white">
+                  Clients
+                </span>
+              </div>
+              <div className="mt-2 flex h-auto w-full items-center justify-center rounded-lg border-2 border-principal-color bg-white p-0 py-4 shadow-md md:min-w-80 xl:p-2">
+                {/* <CalloutCard /> */}
+                <ClientContainer />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </>

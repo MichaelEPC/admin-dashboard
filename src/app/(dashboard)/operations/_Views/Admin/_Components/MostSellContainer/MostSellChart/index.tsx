@@ -22,7 +22,6 @@ const MostSellChart = ({ list, products, years }: props) => {
   useEffect(() => {
     // @ts-ignore
     setData(filterData(list, year));
-    console.log(list);
   }, [year, list]);
 
   return (
